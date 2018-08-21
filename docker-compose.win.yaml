@@ -1,0 +1,34 @@
+version: '3.4'
+
+services:
+
+  caddy:
+    image: abiosoft/caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./data/caddy/Caddyfile:/etc/Caddyfile
+
+  postgres:
+    image: postgres:11-alpine
+    environment:      
+      - POSTGRES_PASSWORD=temporary   
+    ports:
+      - "5432:5432"   
+    volumes:
+      - postgresql:/var/lib/postgresql/data    
+
+  pgadmin:
+    image: dpage/pgadmin4  
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=conradoqg@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=temporary
+    ports:
+      - "81:80"
+    volumes:
+      - ./data/pgadmin:/var/lib/pgadmin
+
+volumes:
+  postgresql:
+    external: true
