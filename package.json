@@ -11,12 +11,12 @@
   "dependencies": {
     "fast-csv": "^2.4.1",
     "fs-extra": "^7.0.0",
+    "got": "^9.1.0",
     "iconv-lite": "^0.4.23",
     "pg": "^7.4.3",
     "progress-stream": "^2.0.0",
     "promise-limit": "^2.7.0",
     "promisepipe": "^3.0.0",
-    "request": "^2.87.0",
-    "request-promise-native": "^1.0.5"
+    "unzip-stream": "^0.3.0"
   }
 }
