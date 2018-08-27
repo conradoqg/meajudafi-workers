@@ -7,8 +7,15 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceFolder}\\lib\\readDataFromCVM.js"
+            "name": "Launch Investment Return",
+            "program": "${workspaceFolder}/lib/investmentReturnCalc.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Read Data",
+            "program": "${workspaceFolder}/lib/readDataFromCVM.js",
+            "console": "integratedTerminal"
         }
     ]
 }
