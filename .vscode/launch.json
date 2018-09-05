@@ -7,14 +7,34 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Investment Return",
-            "program": "${workspaceFolder}/lib/investmentReturnCalc.js"
+            "name": "Launch All Workers",
+            "program": "${workspaceFolder}/bin/cvmfe.js",
+            "args": [
+                "run",
+                "all"
+            ],
+            "console": "integratedTerminal"
         },
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Read Data",
-            "program": "${workspaceFolder}/lib/readDataFromCVM.js",
+            "name": "Launch CVMDataProcess Workers",
+            "program": "${workspaceFolder}/bin/cvmfe.js",
+            "args": [
+                "run",
+                "cvmDataProcess"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch CVMStatisticProcess Workers",
+            "program": "${workspaceFolder}/bin/cvmfe.js",
+            "args": [
+                "run",
+                "cvmStatisticProcess"
+            ],
             "console": "integratedTerminal"
         }
     ]
