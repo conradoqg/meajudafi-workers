@@ -18,7 +18,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch CVMDataProcess Workers",
+            "name": "Launch CVMDataProcess Worker",
             "program": "${workspaceFolder}/bin/cvmfe.js",
             "args": [
                 "run",
@@ -29,11 +29,22 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch CVMStatisticProcess Workers",
+            "name": "Launch CVMStatisticProcess Worker",
             "program": "${workspaceFolder}/bin/cvmfe.js",
             "args": [
                 "run",
                 "cvmStatisticProcess"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch XPIFundProcess Worker",
+            "program": "${workspaceFolder}/bin/cvmfe.js",
+            "args": [
+                "run",
+                "xpiFundProcess"
             ],
             "console": "integratedTerminal"
         }

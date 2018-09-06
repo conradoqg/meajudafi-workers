@@ -3,6 +3,7 @@ if (process.argv[1].includes('snapshot')) process.argv[1] = process.argv[1].repl
 const yargs = require('yargs');
 const cvmDataProcess = require('../lib/cvmDataProcess');
 const cvmStatisticProcess = require('../lib/cvmStatisticProcess');
+const XPIFundProcess = require('../lib/xpiFundProcess');
 
 const createCommandHandler = (func) => {
     return async (argv) => {
@@ -32,13 +33,16 @@ yargs
     }, createCommandHandler(async (argv) => {
         const worker = argv.worker;
 
-        if (worker.toLowerCase() == 'cvmDataProcess') {
+        if (worker.toLowerCase() == 'cvmDataProcess'.toLowerCase()) {
             return await cvmDataProcess();
-        } else if (worker.toLowerCase() == 'cvmStatisticProcess') {
+        } else if (worker.toLowerCase() == 'cvmStatisticProcess'.toLowerCase()) {
             return await cvmStatisticProcess();
-        } else if (worker.toLowerCase() == 'all') {
+        } else if (worker.toLowerCase() == 'xpiFundProcess'.toLowerCase()) {
+            return await (new XPIFundProcess()).work();
+        } else if (worker.toLowerCase() == 'all'.toLowerCase()) {
             await cvmDataProcess();
-            return await cvmStatisticProcess();
+            await cvmStatisticProcess();
+            await (new XPIFundProcess()).work();
         }
     }))
     .demandCommand(1)
