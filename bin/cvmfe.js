@@ -4,6 +4,7 @@ const yargs = require('yargs');
 const cvmDataProcess = require('../lib/cvmDataProcess');
 const cvmStatisticProcess = require('../lib/cvmStatisticProcess');
 const XPIFundProcess = require('../lib/xpiFundProcess');
+const Db = require('../lib/util/db');
 
 const createCommandHandler = (func) => {
     return async (argv) => {
@@ -39,6 +40,10 @@ yargs
             return await cvmStatisticProcess();
         } else if (worker.toLowerCase() == 'xpiFundProcess'.toLowerCase()) {
             return await (new XPIFundProcess()).work();
+        } else if (worker.toLowerCase() == 'migrate'.toLowerCase()) {
+            const db = new Db();
+            await db.takeOnline();
+            return await db.takeOffline();
         } else if (worker.toLowerCase() == 'all'.toLowerCase()) {
             await cvmDataProcess();
             await cvmStatisticProcess();

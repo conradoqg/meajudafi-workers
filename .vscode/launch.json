@@ -47,6 +47,17 @@
                 "xpiFundProcess"
             ],
             "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Migrate Worker",
+            "program": "${workspaceFolder}/bin/cvmfe.js",
+            "args": [
+                "run",
+                "migrate"
+            ],
+            "console": "integratedTerminal"
         }
     ]
 }
