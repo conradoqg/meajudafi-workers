@@ -23,6 +23,8 @@ const createCommandHandler = (func) => {
 yargs
     .example('$0 run cvmDataProcess', 'Download, convert and insert data from CVM to database.')
     .example('$0 run cvmStatisticProcess -b', 'Load CVM data from database and generate financial information.')
+    .example('$0 run xpiFundProcess', 'Load XPI data.')
+    .example('$0 run migrate', 'Migrate database.')
 
     .command('run <workerName> [options]', 'run a worker', (yargs) => {
         return yargs
