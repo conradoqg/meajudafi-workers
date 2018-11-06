@@ -1,0 +1,9 @@
+sudo: true
+dist: trusty
+
+jobs:
+  include:
+    - stage: build docker image
+      script:
+      - chmod +x build.sh
+      - ./build.sh
