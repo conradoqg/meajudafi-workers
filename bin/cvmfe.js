@@ -45,7 +45,8 @@ yargs
         } else if (worker.toLowerCase() == 'migrate'.toLowerCase()) {
             const db = new Db();
             await db.takeOnline();
-            return await db.takeOffline();
+            await db.takeOffline();
+            console.log('Migration completed');            
         } else if (worker.toLowerCase() == 'all'.toLowerCase()) {
             await cvmDataProcess();
             await cvmStatisticProcess();
