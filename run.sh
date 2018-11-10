@@ -49,7 +49,7 @@ if [ -n "$1" ]; then
         shift  
         shift            
 
-        docker run -d --network stack_internal_network $SCHEDULE_ARG --name $NAME -e CONNECTION_STRING=postgresql://"$POSTGRES_USERNAME":"$POSTGRES_PASSWORD"@postgres:5432/cvmData -e CONFIG.READONLY_USERNAME="$POSTGRES_READONLY_USERNAME" -e CONFIG.READONLY_PASSWORD="$POSTGRES_READONLY_PASSWORD" conradoqg/cvm-fund-explorer-workers $@
+        docker run -d --network stack_internal_network $SCHEDULE_ARG --name $NAME -e CONNECTION_STRING=postgresql://"$POSTGRES_USERNAME":"$POSTGRES_PASSWORD"@postgres:5432/cvmData -e READONLY_USERNAME="$POSTGRES_READONLY_USERNAME" -e READONLY_PASSWORD="$POSTGRES_READONLY_PASSWORD" conradoqg/cvm-fund-explorer-workers $@
     elif [ $1 = "rm" ]; then
         docker service rm cvmFundExplorer
     fi
