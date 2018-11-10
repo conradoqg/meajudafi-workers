@@ -9,13 +9,6 @@ RUN apk update && apk upgrade && \
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 
-RUN addgroup -S pptruser && adduser -S -g pptruser pptruser \
-    && mkdir -p /home/pptruser/Downloads \
-    && chown -R pptruser:pptruser /home/pptruser \
-    && chown -R pptruser:pptruser /app
-
-USER pptruser
-
 RUN mkdir /cvm-fund-explorer-workers
 
 COPY . /cvm-fund-explorer-workers
@@ -25,5 +18,12 @@ WORKDIR /cvm-fund-explorer-workers
 VOLUME /cvm-fund-explorer-workers/db
 
 RUN npm install --only=production
+
+RUN addgroup -S pptruser && adduser -S -g pptruser pptruser \
+    && mkdir -p /home/pptruser/Downloads \
+    && chown -R pptruser:pptruser /home/pptruser \
+    && chown -R pptruser:pptruser /cvm-fund-explorer-workers
+
+USER pptruser
 
 ENTRYPOINT [ "node", "./bin/cvmfe.js" ]

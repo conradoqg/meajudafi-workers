@@ -1,15 +1,17 @@
 #!/bin/sh
 
+set -e
+
 IMAGE=cvm-fund-explorer-workers
 
 docker build -t $IMAGE .
 
 if [ -n "$TRAVIS_BRANCH" ]; then
+    echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
     docker tag $IMAGE $DOCKER_USERNAME/$IMAGE:$TRAVIS_BRANCH
     docker push $DOCKER_USERNAME/$IMAGE:$TRAVIS_BRANCH
 
-    if [ "$TRAVIS_BRANCH" = "master" ]; then
-        echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    if [ "$TRAVIS_BRANCH" = "master" ]; then        
         docker tag $IMAGE $DOCKER_USERNAME/$IMAGE:latest
         docker push $DOCKER_USERNAME/$IMAGE:latest
     fi
