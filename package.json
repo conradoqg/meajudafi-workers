@@ -9,7 +9,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "containerized": "^1.0.2",
     "convert-hrtime": "^2.0.0",
     "dayjs": "^1.7.7",
     "fast-csv": "^2.4.1",
@@ -17,6 +16,7 @@
     "got": "^9.3.2",
     "iconv-lite": "^0.4.24",
     "inquirer": "^6.2.0",
+    "is-docker": "^1.1.0",
     "moment": "^2.22.2",
     "pg": "^7.6.1",
     "pg-query-stream": "^1.1.2",
