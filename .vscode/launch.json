@@ -6,6 +6,15 @@
     "configurations": [
         {
             "type": "node",
+            "request": "attach",
+            "name": "Attach to Remote",
+            "address": "localhost",
+            "port": 9229,
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": "/cvm-fund-explorer-workers"
+        },
+        {
+            "type": "node",
             "request": "launch",
             "name": "Launch All Workers",
             "program": "${workspaceFolder}/bin/cvmfe.js",

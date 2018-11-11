@@ -1,13 +1,13 @@
 FROM node:8-alpine
 
-# RUN apk update && apk upgrade && \
-#     echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
-#     echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories && \
-#     apk add --no-cache \
-#       chromium@edge \
-#       nss@edge
+RUN apk update && apk upgrade && \
+    echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
+    echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories && \
+    apk add --no-cache \
+      chromium@edge \
+      nss@edge
 
-# ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 
 RUN mkdir /cvm-fund-explorer-workers
 
@@ -19,11 +19,11 @@ VOLUME /cvm-fund-explorer-workers/db
 
 RUN npm install --only=production
 
-# RUN addgroup -S pptruser && adduser -S -g pptruser pptruser \
-#     && mkdir -p /home/pptruser/Downloads \
-#     && chown -R pptruser:pptruser /home/pptruser \
-#     && chown -R pptruser:pptruser /cvm-fund-explorer-workers
+RUN addgroup -S pptruser && adduser -S -g pptruser pptruser \
+    && mkdir -p /home/pptruser/Downloads \
+    && chown -R pptruser:pptruser /home/pptruser \
+    && chown -R pptruser:pptruser /cvm-fund-explorer-workers
 
-# USER pptruser
+USER pptruser
 
-ENTRYPOINT [ "node", "./bin/cvmfe.js" ]
+ENTRYPOINT [ "node", "--inspect=0.0.0.0", "./bin/cvmfe.js" ]

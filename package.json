@@ -9,6 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "containerized": "^1.0.2",
     "convert-hrtime": "^2.0.0",
     "dayjs": "^1.7.7",
     "fast-csv": "^2.4.1",
@@ -24,7 +25,7 @@
     "progress-stream": "^2.0.0",
     "promise-limit": "^2.7.0",
     "promisepipe": "^3.0.0",
-    "puppeteer": "^1.10.0",
+    "puppeteer": "^1.4.0",
     "string-similarity": "^1.2.1",
     "unzip-stream": "^0.3.0",
     "uuid": "^3.3.2",
