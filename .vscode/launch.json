@@ -8,7 +8,7 @@
             "type": "node",
             "request": "attach",
             "name": "Attach to Remote",
-            "address": "localhost",
+            "address": "cvmfundexplorer.conradoqg.eti.br",
             "port": 9229,
             "localRoot": "${workspaceFolder}",
             "remoteRoot": "/cvm-fund-explorer-workers"
