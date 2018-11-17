@@ -45,6 +45,7 @@ yargs
         } else if (worker.toLowerCase() == 'migrate'.toLowerCase()) {
             const db = new Db();
             await db.takeOnline();
+            await db.migrate();
             await db.takeOffline();
             console.log('Migration completed');            
         } else if (worker.toLowerCase() == 'all'.toLowerCase()) {
