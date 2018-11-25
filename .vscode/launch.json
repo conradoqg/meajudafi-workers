@@ -65,8 +65,19 @@
             "args": [
                 "run",
                 "migrate"
-            ],
-            "console": "integratedTerminal"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Migrate Rollback Worker",
+            "program": "${workspaceFolder}/bin/cvmfe.js",
+            "args": [
+                "run",
+                "migrate",
+                "rollback",
+                "1"
+            ]
         }
     ]
 }

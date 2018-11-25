@@ -26,7 +26,7 @@ yargs
     .example('$0 run xpiFundProcess', 'Load XPI data.')
     .example('$0 run migrate', 'Migrate database.')
 
-    .command('run <workerName> [options]', 'run a worker', (yargs) => {
+    .command('run <workerName> [options...]', 'run a worker', (yargs) => {
         return yargs
             .positional('workerName', {
                 alias: 'worker',
@@ -44,10 +44,14 @@ yargs
             return await (new XPIFundProcess()).work();
         } else if (worker.toLowerCase() == 'migrate'.toLowerCase()) {
             const db = new Db();
-            await db.takeOnline();
-            await db.migrate();
-            await db.takeOffline();
-            console.log('Migration completed');            
+            if (argv.options[0] == 'rollback') {
+                await db.rollback(argv.options[1]);
+            } else if (argv.options[0] == 'reset') {
+                await db.reset();
+            } else {
+                await db.migrate();
+            }
+            console.log('Migration completed');
         } else if (worker.toLowerCase() == 'all'.toLowerCase()) {
             await cvmDataProcess();
             await cvmStatisticProcess();
