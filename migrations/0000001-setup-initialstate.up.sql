@@ -1,10 +1,12 @@
-CREATE EXTENSION IF NOT EXISTS pg_trgm;
-CREATE EXTENSION IF NOT EXISTS unaccent;
+CREATE SCHEMA private;
 
-CREATE OR REPLACE FUNCTION f_unaccent(text)
+CREATE EXTENSION IF NOT EXISTS pg_trgm WITH SCHEMA private;
+CREATE EXTENSION IF NOT EXISTS unaccent WITH SCHEMA private;
+
+CREATE OR REPLACE FUNCTION private.f_unaccent(text)
   RETURNS text AS
 $func$
-SELECT public.unaccent('public.unaccent', $1)  -- schema-qualify function and dictionary
+SELECT private.unaccent('private.unaccent', $1)  -- schema-qualify function and dictionary
 $func$
 LANGUAGE sql
 IMMUTABLE;
@@ -367,8 +369,8 @@ SELECT DISTINCT ON (icf_CNPJ_FUNDO) icf_CNPJ_FUNDO as DISTINCT_icf_CNPJ_FUNDO,*
 		SELECT DISTINCT ON (iry_cnpj_fundo) iry_cnpj_fundo as DISTINCT_iry_cnpj_fundo, * FROM investment_return_yearly_fullname ORDER BY iry_cnpj_fundo, iry_dt_comptc DESC
 	) AS LAST_YEAR ON inf_cadastral_fi_fullname.icf_cnpj_fundo = LAST_YEAR.iry_cnpj_fundo
 WITH DATA;
-CREATE INDEX IF NOT EXISTS inf_cadastral_fi_with_xpi_and_iryf_of_last_year_f_unaccent_idx ON inf_cadastral_fi_with_xpi_and_iryf_of_last_year USING gin(f_unaccent(icf_denom_social) gin_trgm_ops);
+CREATE INDEX IF NOT EXISTS inf_cadastral_fi_with_xpi_and_iryf_of_last_year_f_unaccent_idx ON inf_cadastral_fi_with_xpi_and_iryf_of_last_year USING gin(private.f_unaccent(icf_denom_social) private.gin_trgm_ops);
 CREATE INDEX IF NOT EXISTS inf_cadastral_fi_with_xpi_and_iryf_of_last_year_f_icf_cnpj_fund ON inf_cadastral_fi_with_xpi_and_iryf_of_last_year USING btree (icf_cnpj_fundo COLLATE pg_catalog."default") TABLESPACE pg_default;
 CREATE OR REPLACE FUNCTION icf_denom_social_unaccented(inf_cadastral_fi_with_xpi_and_iryf_of_last_year) RETURNS text AS $$
-  SELECT f_unaccent($1.icf_denom_social);
+  SELECT private.f_unaccent($1.icf_denom_social);
 $$ LANGUAGE SQL;
