@@ -16,10 +16,10 @@ ALTER TABLE public.investment_return_daily RENAME COLUMN investment_return_1y TO
 ALTER TABLE public.investment_return_daily RENAME COLUMN investment_return_2y TO ird_investment_return_2y;
 ALTER TABLE public.investment_return_daily RENAME COLUMN investment_return_3y TO ird_investment_return_3y;
 ALTER TABLE public.investment_return_daily RENAME COLUMN accumulated_investment_return TO ird_accumulated_investment_return;
-ALTER TABLE public.investment_return_daily RENAME COLUMN risk_1y TO ird_cdi_risk_1y;
-ALTER TABLE public.investment_return_daily RENAME COLUMN risk_2y TO ird_cdi_risk_2y;
-ALTER TABLE public.investment_return_daily RENAME COLUMN risk_3y TO ird_cdi_risk_3y;
-ALTER TABLE public.investment_return_daily RENAME COLUMN accumulated_risk TO ird_cdi_accumulated_risk;
+ALTER TABLE public.investment_return_daily RENAME COLUMN risk_1y TO ird_risk_1y;
+ALTER TABLE public.investment_return_daily RENAME COLUMN risk_2y TO ird_risk_2y;
+ALTER TABLE public.investment_return_daily RENAME COLUMN risk_3y TO ird_risk_3y;
+ALTER TABLE public.investment_return_daily RENAME COLUMN accumulated_risk TO ird_accumulated_risk;
 ALTER TABLE public.investment_return_daily RENAME COLUMN sharpe_1y TO ird_cdi_sharpe_1y;
 ALTER TABLE public.investment_return_daily RENAME COLUMN sharpe_2y TO ird_cdi_sharpe_2y;
 ALTER TABLE public.investment_return_daily RENAME COLUMN sharpe_3y TO ird_cdi_sharpe_3y;
@@ -41,10 +41,6 @@ ALTER TABLE public.investment_return_daily RENAME COLUMN bovespa_investment_retu
 ALTER TABLE public.investment_return_daily RENAME COLUMN bovespa_accumulated_investment_return TO ird_bovespa_accumulated_investment_return;
 	
 ALTER TABLE public.investment_return_daily
-    ADD COLUMN ird_bovespa_risk_1y DOUBLE PRECISION,
-    ADD COLUMN ird_bovespa_risk_2y DOUBLE PRECISION,
-    ADD COLUMN ird_bovespa_risk_3y DOUBLE PRECISION,
-    ADD COLUMN ird_bovespa_accumulated_risk DOUBLE PRECISION,
     ADD COLUMN ird_bovespa_sharpe_1y DOUBLE PRECISION,
     ADD COLUMN ird_bovespa_sharpe_2y DOUBLE PRECISION,
     ADD COLUMN ird_bovespa_sharpe_3y DOUBLE PRECISION,
@@ -63,11 +59,11 @@ ALTER TABLE public.investment_return_monthly RENAME COLUMN investment_return_1y 
 ALTER TABLE public.investment_return_monthly RENAME COLUMN investment_return_2y TO irm_investment_return_2y;
 ALTER TABLE public.investment_return_monthly RENAME COLUMN investment_return_3y TO irm_investment_return_3y;
 ALTER TABLE public.investment_return_monthly RENAME COLUMN accumulated_investment_return TO irm_accumulated_investment_return;
-ALTER TABLE public.investment_return_monthly RENAME COLUMN risk TO irm_cdi_risk;
-ALTER TABLE public.investment_return_monthly RENAME COLUMN risk_1y TO irm_cdi_risk_1y;
-ALTER TABLE public.investment_return_monthly RENAME COLUMN risk_2y TO irm_cdi_risk_2y;
-ALTER TABLE public.investment_return_monthly RENAME COLUMN risk_3y TO irm_cdi_risk_3y;
-ALTER TABLE public.investment_return_monthly RENAME COLUMN accumulated_risk TO irm_cdi_accumulated_risk;
+ALTER TABLE public.investment_return_monthly RENAME COLUMN risk TO irm_risk;
+ALTER TABLE public.investment_return_monthly RENAME COLUMN risk_1y TO irm_risk_1y;
+ALTER TABLE public.investment_return_monthly RENAME COLUMN risk_2y TO irm_risk_2y;
+ALTER TABLE public.investment_return_monthly RENAME COLUMN risk_3y TO irm_risk_3y;
+ALTER TABLE public.investment_return_monthly RENAME COLUMN accumulated_risk TO irm_accumulated_risk;
 ALTER TABLE public.investment_return_monthly RENAME COLUMN sharpe TO irm_cdi_sharpe;
 ALTER TABLE public.investment_return_monthly RENAME COLUMN sharpe_1y TO irm_cdi_sharpe_1y;
 ALTER TABLE public.investment_return_monthly RENAME COLUMN sharpe_2y TO irm_cdi_sharpe_2y;
@@ -89,11 +85,7 @@ ALTER TABLE public.investment_return_monthly RENAME COLUMN bovespa_investment_re
 ALTER TABLE public.investment_return_monthly RENAME COLUMN bovespa_investment_return_3y TO irm_bovespa_investment_return_3y;
 ALTER TABLE public.investment_return_monthly RENAME COLUMN bovespa_accumulated_investment_return TO irm_bovespa_accumulated_investment_return;
 
-ALTER TABLE public.investment_return_monthly
-    ADD COLUMN irm_bovespa_risk_1y DOUBLE PRECISION,
-    ADD COLUMN irm_bovespa_risk_2y DOUBLE PRECISION,
-    ADD COLUMN irm_bovespa_risk_3y DOUBLE PRECISION,
-    ADD COLUMN irm_bovespa_accumulated_risk DOUBLE PRECISION,
+ALTER TABLE public.investment_return_monthly    
     ADD COLUMN irm_bovespa_sharpe_1y DOUBLE PRECISION,
     ADD COLUMN irm_bovespa_sharpe_2y DOUBLE PRECISION,
     ADD COLUMN irm_bovespa_sharpe_3y DOUBLE PRECISION,
@@ -112,11 +104,11 @@ ALTER TABLE public.investment_return_yearly RENAME COLUMN investment_return_1y T
 ALTER TABLE public.investment_return_yearly RENAME COLUMN investment_return_2y TO iry_investment_return_2y;
 ALTER TABLE public.investment_return_yearly RENAME COLUMN investment_return_3y TO iry_investment_return_3y;
 ALTER TABLE public.investment_return_yearly RENAME COLUMN accumulated_investment_return TO iry_accumulated_investment_return;
-ALTER TABLE public.investment_return_yearly RENAME COLUMN risk TO iry_cdi_risk;
-ALTER TABLE public.investment_return_yearly RENAME COLUMN risk_1y TO iry_cdi_risk_1y;
-ALTER TABLE public.investment_return_yearly RENAME COLUMN risk_2y TO iry_cdi_risk_2y;
-ALTER TABLE public.investment_return_yearly RENAME COLUMN risk_3y TO iry_cdi_risk_3y;
-ALTER TABLE public.investment_return_yearly RENAME COLUMN accumulated_risk TO iry_cdi_accumulated_risk;
+ALTER TABLE public.investment_return_yearly RENAME COLUMN risk TO iry_risk;
+ALTER TABLE public.investment_return_yearly RENAME COLUMN risk_1y TO iry_risk_1y;
+ALTER TABLE public.investment_return_yearly RENAME COLUMN risk_2y TO iry_risk_2y;
+ALTER TABLE public.investment_return_yearly RENAME COLUMN risk_3y TO iry_risk_3y;
+ALTER TABLE public.investment_return_yearly RENAME COLUMN accumulated_risk TO iry_accumulated_risk;
 ALTER TABLE public.investment_return_yearly RENAME COLUMN sharpe TO iry_cdi_sharpe;
 ALTER TABLE public.investment_return_yearly RENAME COLUMN sharpe_1y TO iry_cdi_sharpe_1y;
 ALTER TABLE public.investment_return_yearly RENAME COLUMN sharpe_2y TO iry_cdi_sharpe_2y;
@@ -138,11 +130,7 @@ ALTER TABLE public.investment_return_yearly RENAME COLUMN bovespa_investment_ret
 ALTER TABLE public.investment_return_yearly RENAME COLUMN bovespa_investment_return_3y TO iry_bovespa_investment_return_3y;
 ALTER TABLE public.investment_return_yearly RENAME COLUMN bovespa_accumulated_investment_return TO iry_bovespa_accumulated_investment_return;
 
-ALTER TABLE public.investment_return_yearly
-    ADD COLUMN iry_bovespa_risk_1y DOUBLE PRECISION,
-    ADD COLUMN iry_bovespa_risk_2y DOUBLE PRECISION,
-    ADD COLUMN iry_bovespa_risk_3y DOUBLE PRECISION,
-    ADD COLUMN iry_bovespa_accumulated_risk DOUBLE PRECISION,
+ALTER TABLE public.investment_return_yearly    
     ADD COLUMN iry_bovespa_sharpe_1y DOUBLE PRECISION,
     ADD COLUMN iry_bovespa_sharpe_2y DOUBLE PRECISION,
     ADD COLUMN iry_bovespa_sharpe_3y DOUBLE PRECISION,
