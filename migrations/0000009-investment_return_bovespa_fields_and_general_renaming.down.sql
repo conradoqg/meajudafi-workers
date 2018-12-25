@@ -80,6 +80,7 @@ ALTER TABLE public.investment_return_monthly RENAME COLUMN irm_bovespa_investmen
 ALTER TABLE public.investment_return_monthly RENAME COLUMN irm_bovespa_accumulated_investment_return TO bovespa_accumulated_investment_return;
 
 ALTER TABLE public.investment_return_monthly
+    DROP COLUMN irm_bovespa_sharpe,
     DROP COLUMN irm_bovespa_sharpe_1y,
     DROP COLUMN irm_bovespa_sharpe_2y,
     DROP COLUMN irm_bovespa_sharpe_3y,
@@ -123,6 +124,7 @@ ALTER TABLE public.investment_return_yearly RENAME COLUMN iry_bovespa_investment
 ALTER TABLE public.investment_return_yearly RENAME COLUMN iry_bovespa_accumulated_investment_return TO bovespa_accumulated_investment_return;
 
 ALTER TABLE public.investment_return_yearly    
+    DROP COLUMN iry_bovespa_sharpe,
     DROP COLUMN iry_bovespa_sharpe_1y,
     DROP COLUMN iry_bovespa_sharpe_2y,
     DROP COLUMN iry_bovespa_sharpe_3y,

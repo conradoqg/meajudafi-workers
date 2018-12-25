@@ -86,6 +86,7 @@ ALTER TABLE public.investment_return_monthly RENAME COLUMN bovespa_investment_re
 ALTER TABLE public.investment_return_monthly RENAME COLUMN bovespa_accumulated_investment_return TO irm_bovespa_accumulated_investment_return;
 
 ALTER TABLE public.investment_return_monthly    
+    ADD COLUMN irm_bovespa_sharpe DOUBLE PRECISION,
     ADD COLUMN irm_bovespa_sharpe_1y DOUBLE PRECISION,
     ADD COLUMN irm_bovespa_sharpe_2y DOUBLE PRECISION,
     ADD COLUMN irm_bovespa_sharpe_3y DOUBLE PRECISION,
@@ -131,6 +132,7 @@ ALTER TABLE public.investment_return_yearly RENAME COLUMN bovespa_investment_ret
 ALTER TABLE public.investment_return_yearly RENAME COLUMN bovespa_accumulated_investment_return TO iry_bovespa_accumulated_investment_return;
 
 ALTER TABLE public.investment_return_yearly    
+    ADD COLUMN iry_bovespa_sharpe DOUBLE PRECISION,
     ADD COLUMN iry_bovespa_sharpe_1y DOUBLE PRECISION,
     ADD COLUMN iry_bovespa_sharpe_2y DOUBLE PRECISION,
     ADD COLUMN iry_bovespa_sharpe_3y DOUBLE PRECISION,
