@@ -1,8 +1,8 @@
 FROM node:8-alpine
 
 RUN apk update && apk upgrade && \
-    echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
-    echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories && \
+    echo @edge http://nl.alpinelinux.org/alpine/v3.8/community >> /etc/apk/repositories && \
+    echo @edge http://nl.alpinelinux.org/alpine/v3.8/main >> /etc/apk/repositories && \
     apk add --no-cache \
       chromium@edge \
       nss@edge
