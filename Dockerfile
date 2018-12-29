@@ -26,4 +26,4 @@ RUN addgroup -S pptruser && adduser -S -g pptruser pptruser \
 
 USER pptruser
 
-ENTRYPOINT [ "node", "./bin/cvmfe.js" ]
+ENTRYPOINT [ "node", "--inspect=0.0.0.0", "./bin/cvmfe.js" ]
