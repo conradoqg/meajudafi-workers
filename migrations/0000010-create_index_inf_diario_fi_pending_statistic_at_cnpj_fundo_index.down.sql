@@ -1,0 +1,1 @@
+DROP INDEX inf_diario_fi_pending_statistic_at_cnpj_fundo_index;

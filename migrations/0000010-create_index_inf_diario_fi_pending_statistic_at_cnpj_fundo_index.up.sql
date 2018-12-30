@@ -1,0 +1,1 @@
+CREATE INDEX inf_diario_fi_pending_statistic_at_cnpj_fundo_index ON public.inf_diario_fi (pending_statistic_at, cnpj_fundo);
