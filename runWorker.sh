@@ -38,9 +38,9 @@ if [ $ACTION = "create" ]; then
     fi
 
     if [ -n "$SCHEDULE" ]; then        
-        docker run --network stack_internal_network $DEBUG_ARGS --label=cron.schedule="$SCHEDULE" $EXPOSE_ARGS --cpu-period=50000 --cpu-quota=25000 --name $NAME --cap-add=SYS_ADMIN  -v worker_volume_$NAME:/cvm-fund-explorer-workers/db -e CONNECTION_STRING=postgresql://"$POSTGRES_USERNAME":"$POSTGRES_PASSWORD"@postgres:5432/cvmData -e READONLY_USERNAME="$POSTGRES_READONLY_USERNAME" -e READONLY_PASSWORD="$POSTGRES_READONLY_PASSWORD" conradoqg/cvm-fund-explorer-workers ${bashopts_commands[@]}
+        docker run --network stack_internal_network $DEBUG_ARGS --label=cron.schedule="$SCHEDULE" $EXPOSE_ARGS --name $NAME --cap-add=SYS_ADMIN  -v worker_volume_$NAME:/cvm-fund-explorer-workers/db -e CONNECTION_STRING=postgresql://"$POSTGRES_USERNAME":"$POSTGRES_PASSWORD"@postgres:5432/cvmData -e READONLY_USERNAME="$POSTGRES_READONLY_USERNAME" -e READONLY_PASSWORD="$POSTGRES_READONLY_PASSWORD" conradoqg/cvm-fund-explorer-workers ${bashopts_commands[@]}
     else
-        docker run --network stack_internal_network $DEBUG_ARGS $EXPOSE_ARGS --cpu-period=50000 --cpu-quota=25000 --name $NAME --cap-add=SYS_ADMIN  -v worker_volume_$NAME:/cvm-fund-explorer-workers/db -e CONNECTION_STRING=postgresql://"$POSTGRES_USERNAME":"$POSTGRES_PASSWORD"@postgres:5432/cvmData -e READONLY_USERNAME="$POSTGRES_READONLY_USERNAME" -e READONLY_PASSWORD="$POSTGRES_READONLY_PASSWORD" conradoqg/cvm-fund-explorer-workers ${bashopts_commands[@]}
+        docker run --network stack_internal_network $DEBUG_ARGS $EXPOSE_ARGS --name $NAME --cap-add=SYS_ADMIN  -v worker_volume_$NAME:/cvm-fund-explorer-workers/db -e CONNECTION_STRING=postgresql://"$POSTGRES_USERNAME":"$POSTGRES_PASSWORD"@postgres:5432/cvmData -e READONLY_USERNAME="$POSTGRES_READONLY_USERNAME" -e READONLY_PASSWORD="$POSTGRES_READONLY_PASSWORD" conradoqg/cvm-fund-explorer-workers ${bashopts_commands[@]}
     fi    
 elif [ $ACTION = "remove" ]; then
     docker service rm cvmFundExplorer
