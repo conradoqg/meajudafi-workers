@@ -27,33 +27,33 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch CVMDataProcess Worker",
+            "name": "Launch CVMDataWorker",
             "program": "${workspaceFolder}/bin/cvmfe.js",
             "args": [
                 "run",
-                "cvmDataProcess"
+                "cvmDataWorker"
             ],
             "console": "integratedTerminal"
         },
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch CVMStatisticProcess Worker",
+            "name": "Launch CVMStatisticWorker",
             "program": "${workspaceFolder}/bin/cvmfe.js",
             "args": [
                 "run",
-                "cvmStatisticProcess"
+                "cvmStatisticWorker"
             ],
             "console": "integratedTerminal"
         },
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch XPIFundProcess Worker",
+            "name": "Launch XPIFundWorker",
             "program": "${workspaceFolder}/bin/cvmfe.js",
             "args": [
                 "run",
-                "xpiFundProcess"
+                "xpiFundWorker"
             ],
             "console": "integratedTerminal"
         },
@@ -64,7 +64,7 @@
             "program": "${workspaceFolder}/bin/cvmfe.js",
             "args": [
                 "run",
-                "migrate"
+                "migrateWorker"
             ]
         },
         {
