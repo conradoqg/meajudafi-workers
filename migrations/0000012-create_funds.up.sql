@@ -1,7 +1,8 @@
 CREATE TABLE funds (
     f_id UUID NOT NULL UNIQUE,
-    f_cnpj TEXT NOT NULL,
+    f_cnpj TEXT NOT NULL UNIQUE,
     f_short_name TEXT,
+    f_name TEXT,
     PRIMARY KEY(f_id, f_cnpj)
 );
 
@@ -10,6 +11,7 @@ COMMENT ON TABLE public.funds IS
 COMMENT ON COLUMN public.funds.f_id IS 'ID de registro do fundo';
 COMMENT ON COLUMN public.funds.f_cnpj IS 'CNPJ do fundo';
 COMMENT ON COLUMN public.funds.f_short_name IS 'Nome curto do fundo';
+COMMENT ON COLUMN public.funds.f_name IS 'Nome do fundo';
 
 CREATE INDEX funds_f_cnpj_index
     ON funds USING btree
