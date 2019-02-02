@@ -2,9 +2,11 @@ const path = require('path');
 if (process.argv[1].includes('snapshot')) process.argv[1] = process.argv[1].replace('arte.js', path.relative(process.cwd(), process.argv0)); // Workaround that shows the correct file path inside the pkg generated file
 const yargs = require('yargs');
 
-const cvmDataWorker = require('../lib/worker/cvmDataWorker');
-const cvmStatisticWorker = require('../lib/worker/cvmStatisticWorker');
+const CVMDataWorker = require('../lib/worker/cvmDataWorker');
+const CVMStatisticWorker = require('../lib/worker/cvmStatisticWorker');
+const DataImprovementWorker = require('../lib/worker/dataImprovementWorker');
 const XPIFundWorker = require('../lib/worker/xpiFundWorker');
+const BTGPactualFundWorker = require('../lib/worker/btgPactualFundWorker');
 const MigrateWorker = require('../lib/worker/migrateWorker');
 
 const createCommandHandler = (func) => {
@@ -38,16 +40,22 @@ yargs
         const worker = argv.worker;
 
         if (worker.toLowerCase() == 'cvmDataWorker'.toLowerCase()) {
-            await (new cvmDataWorker()).work(argv);
+            await (new CVMDataWorker()).work(argv);
         } else if (worker.toLowerCase() == 'cvmStatisticWorker'.toLowerCase()) {
-            await (new cvmStatisticWorker()).work(argv);
+            await (new CVMStatisticWorker()).work(argv);
+        } else if (worker.toLowerCase() == 'dataImprovementWorker'.toLowerCase()) {
+            await (new DataImprovementWorker()).work(argv);
         } else if (worker.toLowerCase() == 'xpiFundWorker'.toLowerCase()) {
             await (new XPIFundWorker()).work(argv);
+        } else if (worker.toLowerCase() == 'btgPactualFundWorker'.toLowerCase()) {
+            await (new BTGPactualFundWorker()).work(argv);
         } else if (worker.toLowerCase() == 'migrateWorker'.toLowerCase()) {
             await (new MigrateWorker()).work(argv);
         } else if (worker.toLowerCase() == 'all'.toLowerCase()) {
-            await (new cvmDataWorker()).work(argv);
-            await (new cvmStatisticWorker()).work(argv);
+            await (new CVMDataWorker()).work(argv);
+            await (new CVMStatisticWorker()).work(argv);
+            await (new DataImprovementWorker()).work(argv);
+            await (new BTGPactualFundWorker()).work(argv);
             await (new XPIFundWorker()).work(argv);
         }
     }))

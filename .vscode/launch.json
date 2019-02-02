@@ -49,11 +49,33 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "Launch DataImprovementWorker",
+            "program": "${workspaceFolder}/bin/cvmfe.js",
+            "args": [
+                "run",
+                "dataImprovementWorker"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Launch XPIFundWorker",
             "program": "${workspaceFolder}/bin/cvmfe.js",
             "args": [
                 "run",
                 "xpiFundWorker"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch BTGPactualFundWorker",
+            "program": "${workspaceFolder}/bin/cvmfe.js",
+            "args": [
+                "run",
+                "btgPactualFundWorker"
             ],
             "console": "integratedTerminal"
         },
@@ -74,7 +96,7 @@
             "program": "${workspaceFolder}/bin/cvmfe.js",
             "args": [
                 "run",
-                "migrate",
+                "migrateWorker",
                 "rollback",
                 "1"
             ]
