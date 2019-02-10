@@ -57,6 +57,8 @@ yargs
             await (new DataImprovementWorker()).work(argv);
             await (new BTGPactualFundWorker()).work(argv);
             await (new XPIFundWorker()).work(argv);
+        } else {
+            console.log(`Worker with name '${worker}' not found!`);
         }
     }))
     .demandCommand(1)
