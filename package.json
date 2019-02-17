@@ -26,6 +26,7 @@
     "pretty-ms": "^3.2.0",
     "progress-stream": "^2.0.0",
     "promise-limit": "^2.7.0",
+    "promise-results": "^0.6.2",
     "promisepipe": "^3.0.0",
     "puppeteer": "^1.4.0",
     "string-similarity": "^1.2.1",
