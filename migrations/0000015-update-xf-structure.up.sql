@@ -42,6 +42,40 @@ CREATE TABLE public.xpi_funds
     CONSTRAINT xpi_funds_pkey PRIMARY KEY (xf_id)
 );
 
+COMMENT ON TABLE public.xpi_funds IS 
+    $$Lista de fundos da XP Investimentos.
+
+    Fonte: https://institucional.xpi.com.br/investimentos/fundos-de-investimento/lista-de-fundos-de-investimento.aspx$$;
+COMMENT ON COLUMN public.xpi_funds.xf_id IS 'ID do fundo na XPI';
+COMMENT ON COLUMN public.xpi_funds.xf_cnpj IS 'CNPJ do fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_formal_risk IS 'Risco formal na XPI';
+COMMENT ON COLUMN public.xpi_funds.xf_morningstar IS 'Classificação Morningstar';
+COMMENT ON COLUMN public.xpi_funds.xf_name IS 'Nome do fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_initial_investment IS 'Valor do investimento inicial';
+COMMENT ON COLUMN public.xpi_funds.xf_state IS 'Situação do fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_adm_fee IS 'Taxa de administração';
+COMMENT ON COLUMN public.xpi_funds.xf_perf_fee IS 'Taxa de performance';
+COMMENT ON COLUMN public.xpi_funds.xf_benchmark IS 'Benchmark do fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_type IS 'Tipo do fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_minimal_movement IS 'Movimentação mínima do fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_minimal_amount_to_stay IS 'Valor mínimo para se manter no fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_investment_quota IS 'Dias para cotização da aplicação no fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_rescue_quota IS 'Dias para cotização do resgate do fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_rescue_financial_settlement IS 'Dias para a liquidação financeira do resgate do fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_investment_rescue_time IS 'Horário máximo de solicitação de resgate';
+COMMENT ON COLUMN public.xpi_funds.xf_anbima_rating IS 'Classificação Ambima do fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_anbima_code IS 'Código da classificação Ambima do fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_custody IS 'Custodiante do fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_auditing IS 'Auditor do fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_manager IS 'Gestor do fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_administrator IS 'Administrador do fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_startdate IS 'Data de início do fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_net_equity IS 'Patrimônio líquido do fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_net_equity_1y IS 'Patrimônio líquido médio do fundo em 1 ano';
+COMMENT ON COLUMN public.xpi_funds.xf_max_adm_fee IS 'Taxa máxima de administração';
+COMMENT ON COLUMN public.xpi_funds.xf_tax_text IS 'Modelo de IR';
+COMMENT ON COLUMN public.xpi_funds.xf_iof_text IS 'Modelo de IOF';
+
 ALTER TABLE public.btgpactual_funds
     ALTER COLUMN bf_cnpj DROP NOT NULL;
 

@@ -31,6 +31,24 @@ CREATE TABLE public.xpi_funds
     CONSTRAINT xpi_funds_xpi_id_key UNIQUE (xf_xpi_id)
 );
 
+COMMENT ON TABLE public.xpi_funds IS 
+    $$Lista de fundos da XP Investimentos.
+
+    Fonte: https://institucional.xpi.com.br/investimentos/fundos-de-investimento/lista-de-fundos-de-investimento.aspx$$;
+COMMENT ON COLUMN public.xpi_funds.xf_id IS 'ID de registro do fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_cnpj IS 'CNPJ do fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_xpi_id IS 'ID do fundo na XPI';
+COMMENT ON COLUMN public.xpi_funds.xf_formal_risk IS 'Risco formal na XPI';
+COMMENT ON COLUMN public.xpi_funds.xf_morningstar IS 'Classificação Morningstar';
+COMMENT ON COLUMN public.xpi_funds.xf_name IS 'Nome do fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_initial_investment IS 'Valor do investimento inicial';
+COMMENT ON COLUMN public.xpi_funds.xf_redemption_delay_in_days IS 'Dias para resgate da cota';
+COMMENT ON COLUMN public.xpi_funds.xf_state IS 'Situação do fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_adm_fee IS 'Taxa de administração';
+COMMENT ON COLUMN public.xpi_funds.xf_perf_fee IS 'Taxa de performance';
+COMMENT ON COLUMN public.xpi_funds.xf_benchmark IS 'Benchmark do fundo';
+COMMENT ON COLUMN public.xpi_funds.xf_type IS 'Tipo do fundo';
+
 ALTER TABLE public.btgpactual_funds
     ALTER COLUMN bf_cnpj SET NOT NULL;
 
