@@ -1,6 +1,7 @@
 const path = require('path');
 if (process.argv[1].includes('snapshot')) process.argv[1] = process.argv[1].replace('arte.js', path.relative(process.cwd(), process.argv0)); // Workaround that shows the correct file path inside the pkg generated file
 const yargs = require('yargs');
+const package = require('../package.json');
 
 const CVMDataWorker = require('../lib/worker/cvmDataWorker');
 const CVMStatisticWorker = require('../lib/worker/cvmStatisticWorker');
@@ -22,6 +23,8 @@ const createCommandHandler = (func) => {
         }
     };
 };
+
+console.log(`CVMFundExplorer v${package.version}`);
 
 yargs
     .example('$0 run cvmDataWorker', 'Download, convert and insert data from CVM to database.')

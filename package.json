@@ -1,12 +1,12 @@
 {
   "name": "cvm-fund-explorer-workers",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.15",
+  "description": "CVMFundExplorer Workers",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Conrado Quilles Gomes",
   "license": "MIT",
   "dependencies": {
     "@urbica/pg-migrate": "^1.0.3",
