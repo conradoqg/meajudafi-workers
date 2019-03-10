@@ -10,6 +10,9 @@ ALTER TABLE public.investment_return_daily
     ALTER COLUMN ird_networth TYPE DOUBLE PRECISION,
     ALTER COLUMN ird_quotaholders TYPE DOUBLE PRECISION;
 
+COMMENT ON COLUMN public.investment_return_daily.ird_networth IS 'Variação de patrinônio do fundo calculado com base no histórico diário';
+COMMENT ON COLUMN public.investment_return_daily.ird_quotaholders IS 'Variação de cotistas do fundo calculado com base no histórico diário';
+
 ALTER TABLE public.investment_return_daily        
     ADD COLUMN ird_accumulated_networth DOUBLE PRECISION,
     ADD COLUMN ird_networth_mtd DOUBLE PRECISION,
@@ -30,9 +33,31 @@ ALTER TABLE public.investment_return_daily
     ADD COLUMN ird_quotaholders_2y DOUBLE PRECISION,
     ADD COLUMN ird_quotaholders_3y DOUBLE PRECISION;
 
+COMMENT ON COLUMN public.investment_return_daily.ird_accumulated_networth IS 'Patrinônio do fundo acumulado calculado com base no histórico diário';
+COMMENT ON COLUMN public.investment_return_daily.ird_networth_mtd IS 'Variação de patrinônio do fundo no mês calculado com base no histórico diário';
+COMMENT ON COLUMN public.investment_return_daily.ird_networth_ytd IS 'Variação de patrinônio do fundo no ano calculado com base no histórico diário';
+COMMENT ON COLUMN public.investment_return_daily.ird_networth_1m IS 'Variação de patrinônio do fundo em 1 mês calculado com base no histórico diário';
+COMMENT ON COLUMN public.investment_return_daily.ird_networth_3m IS 'Variação de patrinônio do fundo em 3 meses calculado com base no histórico diário';
+COMMENT ON COLUMN public.investment_return_daily.ird_networth_6m IS 'Variação de patrinônio do fundo em 6 meses calculado com base no histórico diário';
+COMMENT ON COLUMN public.investment_return_daily.ird_networth_1y IS 'Variação de patrinônio do fundo em 1 ano calculado com base no histórico diário';
+COMMENT ON COLUMN public.investment_return_daily.ird_networth_2y IS 'Variação de patrinônio do fundo em 2 anos calculado com base no histórico diário';
+COMMENT ON COLUMN public.investment_return_daily.ird_networth_3y IS 'Variação de patrinônio do fundo em 3 anos calculado com base no histórico diário';
+COMMENT ON COLUMN public.investment_return_daily.ird_accumulated_quotaholders IS 'Cotistas do fundo acumulado calculado com base no histórico diário';
+COMMENT ON COLUMN public.investment_return_daily.ird_quotaholders_mtd IS 'Variação de patrinônio do fundo no mês calculado com base no histórico diário';
+COMMENT ON COLUMN public.investment_return_daily.ird_quotaholders_ytd IS 'Variação de patrinônio do fundo no ano calculado com base no histórico diário';
+COMMENT ON COLUMN public.investment_return_daily.ird_quotaholders_1m IS 'Variação de patrinônio do fundo em 1 mês calculado com base no histórico diário';
+COMMENT ON COLUMN public.investment_return_daily.ird_quotaholders_3m IS 'Variação de patrinônio do fundo em 3 meses calculado com base no histórico diário';
+COMMENT ON COLUMN public.investment_return_daily.ird_quotaholders_6m IS 'Variação de patrinônio do fundo em 6 meses calculado com base no histórico diário';
+COMMENT ON COLUMN public.investment_return_daily.ird_quotaholders_1y IS 'Variação de patrinônio do fundo em 1 ano calculado com base no histórico diário';
+COMMENT ON COLUMN public.investment_return_daily.ird_quotaholders_2y IS 'Variação de patrinônio do fundo em 2 anos calculado com base no histórico diário';
+COMMENT ON COLUMN public.investment_return_daily.ird_quotaholders_3y IS 'Variação de patrinônio do fundo em 3 anos calculado com base no histórico diário';
+
 ALTER TABLE public.investment_return_monthly
     ALTER COLUMN irm_networth TYPE double precision,
     ALTER COLUMN irm_quotaholders TYPE double precision;
+
+COMMENT ON COLUMN public.investment_return_monthly.irm_networth IS 'Variação de patrinônio do fundo calculado com base no histórico mensal';
+COMMENT ON COLUMN public.investment_return_monthly.irm_quotaholders IS 'Variação de cotistas do fundo calculado com base no histórico mensal';
 
 ALTER TABLE public.investment_return_monthly       
     ADD COLUMN irm_accumulated_networth DOUBLE PRECISION,
@@ -54,9 +79,31 @@ ALTER TABLE public.investment_return_monthly
     ADD COLUMN irm_quotaholders_2y DOUBLE PRECISION,
     ADD COLUMN irm_quotaholders_3y DOUBLE PRECISION;
 
+COMMENT ON COLUMN public.investment_return_monthly.irm_accumulated_networth IS 'Patrinônio do fundo acumulado calculado com base no histórico mensal';
+COMMENT ON COLUMN public.investment_return_monthly.irm_networth_mtd IS 'Variação de patrinônio do fundo no mês calculado com base no histórico mensal';
+COMMENT ON COLUMN public.investment_return_monthly.irm_networth_ytd IS 'Variação de patrinônio do fundo no ano calculado com base no histórico mensal';
+COMMENT ON COLUMN public.investment_return_monthly.irm_networth_1m IS 'Variação de patrinônio do fundo em 1 mês calculado com base no histórico mensal';
+COMMENT ON COLUMN public.investment_return_monthly.irm_networth_3m IS 'Variação de patrinônio do fundo em 3 meses calculado com base no histórico mensal';
+COMMENT ON COLUMN public.investment_return_monthly.irm_networth_6m IS 'Variação de patrinônio do fundo em 6 meses calculado com base no histórico mensal';
+COMMENT ON COLUMN public.investment_return_monthly.irm_networth_1y IS 'Variação de patrinônio do fundo em 1 ano calculado com base no histórico mensal';
+COMMENT ON COLUMN public.investment_return_monthly.irm_networth_2y IS 'Variação de patrinônio do fundo em 2 anos calculado com base no histórico mensal';
+COMMENT ON COLUMN public.investment_return_monthly.irm_networth_3y IS 'Variação de patrinônio do fundo em 3 anos calculado com base no histórico mensal';
+COMMENT ON COLUMN public.investment_return_monthly.irm_accumulated_quotaholders IS 'Cotistas do fundo acumulado calculado com base no histórico mensal';
+COMMENT ON COLUMN public.investment_return_monthly.irm_quotaholders_mtd IS 'Variação de patrinônio do fundo no mês calculado com base no histórico mensal';
+COMMENT ON COLUMN public.investment_return_monthly.irm_quotaholders_ytd IS 'Variação de patrinônio do fundo no ano calculado com base no histórico mensal';
+COMMENT ON COLUMN public.investment_return_monthly.irm_quotaholders_1m IS 'Variação de patrinônio do fundo em 1 mês calculado com base no histórico mensal';
+COMMENT ON COLUMN public.investment_return_monthly.irm_quotaholders_3m IS 'Variação de patrinônio do fundo em 3 meses calculado com base no histórico mensal';
+COMMENT ON COLUMN public.investment_return_monthly.irm_quotaholders_6m IS 'Variação de patrinônio do fundo em 6 meses calculado com base no histórico mensal';
+COMMENT ON COLUMN public.investment_return_monthly.irm_quotaholders_1y IS 'Variação de patrinônio do fundo em 1 ano calculado com base no histórico mensal';
+COMMENT ON COLUMN public.investment_return_monthly.irm_quotaholders_2y IS 'Variação de patrinônio do fundo em 2 anos calculado com base no histórico mensal';
+COMMENT ON COLUMN public.investment_return_monthly.irm_quotaholders_3y IS 'Variação de patrinônio do fundo em 3 anos calculado com base no histórico mensal';
+
 ALTER TABLE public.investment_return_yearly
     ALTER COLUMN iry_networth TYPE double precision,
     ALTER COLUMN iry_quotaholders TYPE double precision;
+
+COMMENT ON COLUMN public.investment_return_yearly.iry_networth IS 'Variação de patrinônio do fundo calculado com base no histórico anual';
+COMMENT ON COLUMN public.investment_return_yearly.iry_networth IS 'Variação de cotistas do fundo calculado com base no histórico anual';
 
 ALTER TABLE public.investment_return_yearly    
     ADD COLUMN iry_investment_return_mtd DOUBLE PRECISION,
@@ -100,6 +147,25 @@ ALTER TABLE public.investment_return_yearly
     ADD COLUMN iry_quotaholders_1y DOUBLE PRECISION,
     ADD COLUMN iry_quotaholders_2y DOUBLE PRECISION,
     ADD COLUMN iry_quotaholders_3y DOUBLE PRECISION;
+
+COMMENT ON COLUMN public.investment_return_yearly.iry_accumulated_networth IS 'Patrinônio do fundo acumulado calculado com base no histórico anual';
+COMMENT ON COLUMN public.investment_return_yearly.iry_networth_mtd IS 'Variação de patrinônio do fundo no mês calculado com base no histórico anual';
+COMMENT ON COLUMN public.investment_return_yearly.iry_networth_ytd IS 'Variação de patrinônio do fundo no ano calculado com base no histórico anual';
+COMMENT ON COLUMN public.investment_return_yearly.iry_networth_1m IS 'Variação de patrinônio do fundo em 1 mês calculado com base no histórico anual';
+COMMENT ON COLUMN public.investment_return_yearly.iry_networth_3m IS 'Variação de patrinônio do fundo em 3 meses calculado com base no histórico anual';
+COMMENT ON COLUMN public.investment_return_yearly.iry_networth_6m IS 'Variação de patrinônio do fundo em 6 meses calculado com base no histórico anual';
+COMMENT ON COLUMN public.investment_return_yearly.iry_networth_1y IS 'Variação de patrinônio do fundo em 1 ano calculado com base no histórico anual';
+COMMENT ON COLUMN public.investment_return_yearly.iry_networth_2y IS 'Variação de patrinônio do fundo em 2 anos calculado com base no histórico anual';
+COMMENT ON COLUMN public.investment_return_yearly.iry_networth_3y IS 'Variação de patrinônio do fundo em 3 anos calculado com base no histórico anual';
+COMMENT ON COLUMN public.investment_return_yearly.iry_accumulated_quotaholders IS 'Cotistas do fundo acumulado calculado com base no histórico anual';
+COMMENT ON COLUMN public.investment_return_yearly.iry_quotaholders_mtd IS 'Variação de patrinônio do fundo no mês calculado com base no histórico anual';
+COMMENT ON COLUMN public.investment_return_yearly.iry_quotaholders_ytd IS 'Variação de patrinônio do fundo no ano calculado com base no histórico anual';
+COMMENT ON COLUMN public.investment_return_yearly.iry_quotaholders_1m IS 'Variação de patrinônio do fundo em 1 mês calculado com base no histórico anual';
+COMMENT ON COLUMN public.investment_return_yearly.iry_quotaholders_3m IS 'Variação de patrinônio do fundo em 3 meses calculado com base no histórico anual';
+COMMENT ON COLUMN public.investment_return_yearly.iry_quotaholders_6m IS 'Variação de patrinônio do fundo em 6 meses calculado com base no histórico anual';
+COMMENT ON COLUMN public.investment_return_yearly.iry_quotaholders_1y IS 'Variação de patrinônio do fundo em 1 ano calculado com base no histórico anual';
+COMMENT ON COLUMN public.investment_return_yearly.iry_quotaholders_2y IS 'Variação de patrinônio do fundo em 2 anos calculado com base no histórico anual';
+COMMENT ON COLUMN public.investment_return_yearly.iry_quotaholders_3y IS 'Variação de patrinônio do fundo em 3 anos calculado com base no histórico anual';
 
 ALTER TABLE public.btgpactual_funds
     RENAME bf_investiment_quota TO bf_investment_quota;

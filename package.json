@@ -1,6 +1,6 @@
 {
   "name": "cvm-fund-explorer-workers",
-  "version": "1.0.15",
+  "version": "1.0.17",
   "description": "CVMFundExplorer Workers",
   "main": "index.js",
   "scripts": {

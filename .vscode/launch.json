@@ -31,7 +31,8 @@
             "program": "${workspaceFolder}/bin/cvmfe.js",
             "args": [
                 "run",
-                "cvmDataWorker"
+                "cvmDataWorker",
+                "sampleData"
             ],
             "console": "integratedTerminal"
         },
@@ -42,7 +43,8 @@
             "program": "${workspaceFolder}/bin/cvmfe.js",
             "args": [
                 "run",
-                "cvmStatisticWorker"
+                "cvmStatisticWorker",
+                "fullStatistics"
             ],
             "console": "integratedTerminal"
         },
