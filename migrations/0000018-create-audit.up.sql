@@ -12,9 +12,10 @@
 --
 -- Should really be converted into a relocatable EXTENSION, with control and upgrade files.
 
-CREATE EXTENSION IF NOT EXISTS hstore;
-
 CREATE SCHEMA audit;
+
+CREATE EXTENSION IF NOT EXISTS hstore WITH SCHEMA audit;
+
 REVOKE ALL ON SCHEMA audit FROM public;
 
 COMMENT ON SCHEMA audit IS 'Out-of-table audit/history logging tables and trigger functions';
