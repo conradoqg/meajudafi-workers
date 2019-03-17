@@ -1,8 +1,16 @@
+ALTER ROLE postgres
+    SET search_path TO public,private;
+
+ALTER ROLE readonly
+    SET search_path TO public,private;
+
 ALTER TABLE public.xpi_funds
     ADD COLUMN xf_date date;
 	
 ALTER TABLE public.btgpactual_funds
     ADD COLUMN bf_date date;
+
+SET search_path to public,private;
 
 CREATE VIEW changed_funds AS
 	SELECT table_name, action, changed_fields, row_data, funds.f_short_name FROM audit.logged_actions

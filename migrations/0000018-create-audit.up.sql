@@ -20,6 +20,8 @@ REVOKE ALL ON SCHEMA audit FROM public;
 
 COMMENT ON SCHEMA audit IS 'Out-of-table audit/history logging tables and trigger functions';
 
+SET search_path = pg_catalog, public, private;
+
 --
 -- Audited data. Lots of information is available, it's just a matter of how much
 -- you really want to record. See:
@@ -145,7 +147,7 @@ END;
 $body$
 LANGUAGE plpgsql
 SECURITY DEFINER
-SET search_path = pg_catalog, public;
+SET search_path = pg_catalog, public, private;
 
 
 COMMENT ON FUNCTION audit.if_modified_func() IS $body$
@@ -252,5 +254,5 @@ COMMENT ON VIEW audit.tableslist IS $body$
 View showing all tables with auditing set up. Ordered by schema, then table.
 $body$;
 
-SELECT audit.audit_table('btgpactual_funds', 'true', 'false');
-SELECT audit.audit_table('xpi_funds',  'true', 'false');
+SELECT audit.audit_table('btgpactual_funds', 'true', 'false', '{bf_date, xf_date, xf_net_equity, xf_net_equity_1y}'::text[]);
+SELECT audit.audit_table('xpi_funds',  'true', 'false', '{bf_date, xf_date, xf_net_equity, xf_net_equity_1y}'::text[]);
