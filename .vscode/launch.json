@@ -20,7 +20,8 @@
             "program": "${workspaceFolder}/bin/cvmfe.js",
             "args": [
                 "run",
-                "all"
+                "all",
+                "sampleData"
             ],
             "console": "integratedTerminal"
         },
