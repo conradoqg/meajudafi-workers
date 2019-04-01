@@ -1,0 +1,1 @@
+DROP INDEX public.icf_with_xf_and_bf_and_iry_and_f_of_last_year_common_filter;
