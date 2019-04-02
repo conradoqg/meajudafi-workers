@@ -1,11 +1,8 @@
 {
-  "name": "cvm-fund-explorer-workers",
-  "version": "1.0.19",
-  "description": "CVMFundExplorer Workers",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "name": "meajudafi-workers",
+  "version": "1.21.0",
+  "description": "Me Ajuda FI Workers",
+  "main": "index.js",  
   "author": "Conrado Quilles Gomes",
   "license": "MIT",
   "dependencies": {
@@ -19,6 +16,7 @@
     "inquirer": "^6.2.0",
     "is-docker": "^1.1.0",
     "moment": "^2.22.2",
+    "node-fetch": "^2.3.0",
     "pg": "^7.6.1",
     "pg-connection-string": "^2.0.0",
     "pg-query-stream": "^1.1.2",
