@@ -1,6 +1,6 @@
 # meajudafi-workers
 
-Background workers for the [meajudafi](https://github.com/conradoqg/meajudafi-stack) stack.
+Background workers of the [meajudafi](https://github.com/conradoqg/meajudafi-stack) stack.
 
 ## Available workers
 
@@ -20,9 +20,28 @@ $ ./bin/cvmfe.js run <worker> <options>
 
 ## Related repositories
 
-- [meajudafi-front-end](https://github.com/conradoqg/meajudafi-front-end)
 - [meajudafi-stack](https://github.com/conradoqg/meajudafi-stack)
+- [meajudafi-front-end](https://github.com/conradoqg/meajudafi-front-end)
 - [meajudafi-docker-container-crontab](https://github.com/conradoqg/meajudafi-docker-container-crontab)
+
+## Troubleshooting
+Fixing 15 minutes connection broken when using Docker Swarm:
+
+```
+$ docker run --net=host --ipc=host --uts=host --pid=host -it --security-opt=seccomp=unconfined --privileged --rm -v /:/host alpine /bin/sh
+
+$ chroot /host
+
+$ echo "net.ipv4.tcp_keepalive_time = 600" >> /etc/sysctl.d/00-alpine.conf
+$ echo "net.ipv4.tcp_keepalive_intvl = 30" >> /etc/sysctl.d/00-alpine.conf
+$ echo "net.ipv4.tcp_keepalive_probes = 10" >> /etc/sysctl.d/00-alpine.conf
+
+$ sysctl -p /etc/sysctl.d/00-alpine.conf
+
+or
+
+# docker run --net=host --ipc=host --uts=host --pid=host -it --security-opt=seccomp=unconfined --privileged --rm -v /:/host alpine /bin/sh -c "chroot /host && echo \"net.ipv4.tcp_keepalive_time = 600\" >> /etc/sysctl.d/00-alpine.conf && echo \"net.ipv4.tcp_keepalive_intvl = 30\" >> /etc/sysctl.d/00-alpine.conf && echo "net.ipv4.tcp_keepalive_probes = 10" >> /etc/sysctl.d/00-alpine.conf && sysctl -p /etc/sysctl.d/00-alpine.conf"
+```
 
 License
 ----
