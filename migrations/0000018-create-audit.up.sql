@@ -254,5 +254,5 @@ COMMENT ON VIEW audit.tableslist IS $body$
 View showing all tables with auditing set up. Ordered by schema, then table.
 $body$;
 
-SELECT audit.audit_table('btgpactual_funds', 'true', 'false', '{bf_date, xf_date, xf_net_equity, xf_net_equity_1y}'::text[]);
-SELECT audit.audit_table('xpi_funds',  'true', 'false', '{bf_date, xf_date, xf_net_equity, xf_net_equity_1y}'::text[]);
+SELECT audit.audit_table('btgpactual_funds', 'true', 'false', '{bf_date, bf_net_equity}'::text[]);
+SELECT audit.audit_table('xpi_funds',  'true', 'false', '{xf_date, xf_net_equity, xf_net_equity_1y}'::text[]);
