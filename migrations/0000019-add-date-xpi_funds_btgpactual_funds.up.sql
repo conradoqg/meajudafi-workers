@@ -18,7 +18,7 @@ ALTER TABLE public.btgpactual_funds
 SET search_path to public,private;
 
 CREATE VIEW changed_funds AS
-	SELECT table_name, action, changed_fields, row_data, funds.f_short_name FROM audit.logged_actions
+	SELECT table_name, action, action_tstamp_stm, changed_fields, row_data, funds.f_short_name FROM audit.logged_actions
 		LEFT JOIN funds ON logged_actions.row_data->'bf_cnpj' = funds.f_cnpj OR logged_actions.row_data->'xf_cnpj' = funds.f_cnpj	
 		WHERE logged_actions.row_data->'bf_cnpj' IS NOT NULL OR logged_actions.row_data->'xf_cnpj' IS NOT NULL;
 
