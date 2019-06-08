@@ -40,7 +40,13 @@ $ sysctl -p /etc/sysctl.d/00-alpine.conf
 
 or
 
-# docker run --net=host --ipc=host --uts=host --pid=host -it --security-opt=seccomp=unconfined --privileged --rm -v /:/host alpine /bin/sh -c "chroot /host && echo \"net.ipv4.tcp_keepalive_time = 600\" >> /etc/sysctl.d/00-alpine.conf && echo \"net.ipv4.tcp_keepalive_intvl = 30\" >> /etc/sysctl.d/00-alpine.conf && echo "net.ipv4.tcp_keepalive_probes = 10" >> /etc/sysctl.d/00-alpine.conf && sysctl -p /etc/sysctl.d/00-alpine.conf"
+$ docker run --net=host --ipc=host --uts=host --pid=host -it --security-opt=seccomp=unconfined --privileged --rm -v /:/host alpine /bin/sh -c "chroot /host && echo \"net.ipv4.tcp_keepalive_time = 600\" >> /etc/sysctl.d/00-alpine.conf && echo \"net.ipv4.tcp_keepalive_intvl = 30\" >> /etc/sysctl.d/00-alpine.conf && echo "net.ipv4.tcp_keepalive_probes = 10" >> /etc/sysctl.d/00-alpine.conf && sysctl -p /etc/sysctl.d/00-alpine.conf"
+
+or change this settings on sysctl.conf
+
+net.ipv4.tcp_keepalive_time=300
+net.ipv4.tcp_keepalive_intvl=30
+net.ipv4.tcp_keepalive_probes=10
 ```
 
 License

@@ -30,6 +30,17 @@ if [ -v ${bashopts_commands[0]} ]; then
     exit 1 
 fi
 
+echo "Settings"
+echo "NAME: $NAME"
+echo "SCHEDULE: $SCHEDULE"
+echo "DEBUG: $DEBUG"
+echo "POSTGRES_USERNAME: $POSTGRES_USERNAME"
+echo "POSTGRES_PASSWORD: $POSTGRES_PASSWORD"
+echo "POSTGRES_READONLY_USERNAME: $POSTGRES_READONLY_USERNAME"
+echo "POSTGRES_READONLY_PASSWORD: $POSTGRES_READONLY_PASSWORD"
+
+echo "Deploying $ENV environment stack"
+
 if [ $ACTION = "create" ]; then    
     if ! $DEBUG; then
         DEBUG_ARGS="-d"
