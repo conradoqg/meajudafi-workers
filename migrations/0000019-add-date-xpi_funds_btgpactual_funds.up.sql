@@ -6,9 +6,6 @@ DROP TRIGGER audit_trigger_stm ON xpi_funds;
 ALTER ROLE postgres
     SET search_path TO public,private;
 
-ALTER ROLE readonly
-    SET search_path TO public,private;
-
 ALTER TABLE public.xpi_funds
     ADD COLUMN xf_date date;
 	

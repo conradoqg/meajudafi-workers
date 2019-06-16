@@ -8,7 +8,7 @@
             "type": "node",
             "request": "attach",
             "name": "Attach to Remote",
-            "address": "cvmfundexplorer.conradoqg.eti.br",
+            "address": "meajudafi.com.br",
             "port": 9229,
             "localRoot": "${workspaceFolder}",
             "remoteRoot": "/cvm-fund-explorer-workers"
@@ -45,7 +45,7 @@
             "args": [
                 "run",
                 "cvmStatisticWorker",
-                "fullStatistics"
+                "sampleData"
             ],
             "console": "integratedTerminal"
         },
