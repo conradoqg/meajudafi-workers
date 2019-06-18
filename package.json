@@ -1,8 +1,8 @@
 {
   "name": "meajudafi-workers",
-  "version": "1.22.0",
+  "version": "1.23.0",
   "description": "Me Ajuda FI Workers",
-  "main": "index.js",  
+  "main": "index.js",
   "author": "Conrado Quilles Gomes",
   "license": "MIT",
   "dependencies": {
