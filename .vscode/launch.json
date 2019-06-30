@@ -85,6 +85,17 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "Launch ModalMaisFundWorker",
+            "program": "${workspaceFolder}/bin/cvmfe.js",
+            "args": [
+                "run",
+                "modalMaisFundWorker"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Launch Migrate Worker",
             "program": "${workspaceFolder}/bin/cvmfe.js",
             "args": [

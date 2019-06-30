@@ -8,6 +8,7 @@ const CVMStatisticWorker = require('../lib/worker/cvmStatisticWorker');
 const DataImprovementWorker = require('../lib/worker/dataImprovementWorker');
 const XPIFundWorker = require('../lib/worker/xpiFundWorker');
 const BTGPactualFundWorker = require('../lib/worker/btgPactualFundWorker');
+const ModalMaisFundWorker = require('../lib/worker/modalMaisFundWorker');
 const MigrateWorker = require('../lib/worker/migrateWorker');
 
 const createCommandHandler = (func) => {
@@ -52,6 +53,8 @@ yargs
             await (new XPIFundWorker()).work(argv);
         } else if (worker.toLowerCase() == 'btgPactualFundWorker'.toLowerCase()) {
             await (new BTGPactualFundWorker()).work(argv);
+        } else if (worker.toLowerCase() == 'modalMaisFundWorker'.toLowerCase()) {
+            await (new ModalMaisFundWorker()).work(argv);
         } else if (worker.toLowerCase() == 'migrateWorker'.toLowerCase()) {
             await (new MigrateWorker()).work(argv);
         } else if (worker.toLowerCase() == 'all'.toLowerCase()) {
@@ -59,6 +62,7 @@ yargs
             await (new CVMStatisticWorker()).work(argv);
             await (new DataImprovementWorker()).work(argv);
             await (new BTGPactualFundWorker()).work(argv);
+            await (new ModalMaisFundWorker()).work(argv);
             await (new XPIFundWorker()).work(argv);
         } else {
             console.log(`Worker with name '${worker}' not found!`);
