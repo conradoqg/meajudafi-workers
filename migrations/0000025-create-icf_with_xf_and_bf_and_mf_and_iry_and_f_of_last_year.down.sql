@@ -1,0 +1,1 @@
+DROP MATERIALIZED VIEW public.icf_with_xf_and_bf_and_mf_and_iry_and_f_of_last_year;
