@@ -52,9 +52,10 @@ SELECT
 				(SELECT MAX(irm_dt_comptc)::timestamp::date FROM investment_return_monthly),
 				interval '1 month') as ts) REFERENCE_DATE_SERIES
 		  	WHERE 
-				icf_with_xf_and_bf_and_mf_and_iry_and_f_of_last_year.xf_id IS NOT NULL OR
+				(icf_with_xf_and_bf_and_mf_and_iry_and_f_of_last_year.xf_id IS NOT NULL OR
 				icf_with_xf_and_bf_and_mf_and_iry_and_f_of_last_year.bf_id IS NOT NULL OR
-				icf_with_xf_and_bf_and_mf_and_iry_and_f_of_last_year.mf_id IS NOT NULL
+				icf_with_xf_and_bf_and_mf_and_iry_and_f_of_last_year.mf_id IS NOT NULL) AND
+				icf_with_xf_and_bf_and_mf_and_iry_and_f_of_last_year.icf_sit <> 'CANCELADA'
 	) AS DATE_SERIES					
 	LEFT JOIN investment_return_monthly ON irm_cnpj_fundo = DATE_SERIES.f_cnpj AND DATE_SERIES.last_day_of_month = irm_dt_comptc				
 	ORDER BY irm_dt_comptc, xf_name, icf_classe
