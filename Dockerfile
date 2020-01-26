@@ -1,8 +1,8 @@
-FROM node:8-alpine
+FROM node:8-alpine3.9
 
 RUN apk update && apk upgrade && \
-    echo @edge http://nl.alpinelinux.org/alpine/v3.8/community >> /etc/apk/repositories && \
-    echo @edge http://nl.alpinelinux.org/alpine/v3.8/main >> /etc/apk/repositories && \
+    echo @edge http://nl.alpinelinux.org/alpine/v3.9/community >> /etc/apk/repositories && \
+    echo @edge http://nl.alpinelinux.org/alpine/v3.9/main >> /etc/apk/repositories && \
     apk add --no-cache \
       chromium@edge \
       nss@edge
@@ -18,6 +18,10 @@ WORKDIR /cvm-fund-explorer-workers
 VOLUME /cvm-fund-explorer-workers/db
 
 RUN npm install --only=production
+
+RUN npm list | grep pupp
+
+RUN /usr/bin/chromium-browser --version
 
 RUN addgroup -S pptruser && adduser -S -g pptruser pptruser \
     && mkdir -p /home/pptruser/Downloads \
