@@ -1,12 +1,13 @@
 {
   "name": "meajudafi-workers",
-  "version": "1.30.0",
+  "version": "1.31.0",
   "description": "Me Ajuda FI Workers",
   "main": "index.js",
   "author": "Conrado Quilles Gomes",
   "license": "MIT",
   "dependencies": {
     "@urbica/pg-migrate": "^1.0.3",
+    "byline": "^5.0.0",
     "convert-hrtime": "^2.0.0",
     "dayjs": "^1.7.7",
     "fast-csv": "^2.4.1",

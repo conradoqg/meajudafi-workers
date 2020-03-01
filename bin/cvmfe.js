@@ -4,6 +4,7 @@ const yargs = require('yargs');
 const package = require('../package.json');
 
 const CVMDataWorker = require('../lib/worker/cvmDataWorker');
+const B3DataWorker = require('../lib/worker/b3DataWorker');
 const CVMStatisticWorker = require('../lib/worker/cvmStatisticWorker');
 const DataImprovementWorker = require('../lib/worker/dataImprovementWorker');
 const XPIFundWorker = require('../lib/worker/xpiFundWorker');
@@ -45,6 +46,8 @@ yargs
 
         if (worker.toLowerCase() == 'cvmDataWorker'.toLowerCase()) {
             await (new CVMDataWorker()).work(argv);
+        } else if (worker.toLowerCase() == 'b3DataWorker'.toLowerCase()) {
+            await (new B3DataWorker()).work(argv);
         } else if (worker.toLowerCase() == 'cvmStatisticWorker'.toLowerCase()) {
             await (new CVMStatisticWorker()).work(argv);
         } else if (worker.toLowerCase() == 'dataImprovementWorker'.toLowerCase()) {
@@ -59,6 +62,7 @@ yargs
             await (new MigrateWorker()).work(argv);
         } else if (worker.toLowerCase() == 'all'.toLowerCase()) {
             await (new CVMDataWorker()).work(argv);
+            await (new B3DataWorker()).work(argv);
             await (new CVMStatisticWorker()).work(argv);
             await (new DataImprovementWorker()).work(argv);
             await (new BTGPactualFundWorker()).work(argv);
