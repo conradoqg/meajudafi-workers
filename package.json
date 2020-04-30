@@ -14,7 +14,7 @@
     "fs-extra": "^7.0.1",
     "got": "^9.3.2",
     "iconv-lite": "^0.4.24",
-    "inquirer": "^6.2.0",
+    "inquirer": "^7.1.0",
     "is-docker": "^1.1.0",
     "moment": "^2.22.2",
     "node-fetch": "^2.3.0",
