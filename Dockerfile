@@ -1,4 +1,4 @@
-FROM node:8-alpine3.9
+FROM node:12-alpine3.9
 
 RUN apk update && apk upgrade && \
     echo @edge http://nl.alpinelinux.org/alpine/v3.9/community >> /etc/apk/repositories && \
