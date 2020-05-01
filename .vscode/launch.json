@@ -6,22 +6,28 @@
     "configurations": [        
         {
             "type": "node",
+            "protocol": "inspector",
             "request": "attach",
             "name": "Attach to Remote",
             "address": "meajudafi.com.br",
             "port": 9229,
             "localRoot": "${workspaceFolder}",
-            "remoteRoot": "/cvm-fund-explorer-workers"
+            "remoteRoot": "/cvm-fund-explorer-workers",
+            "trace": true
         },
         {
             "type": "node",
             "request": "launch",
             "name": "Launch All Workers",
             "program": "${workspaceFolder}/bin/cvmfe.js",
+            "env": {
+                "WTD_TOKEN": "oXJEmvYW0Osw3ALRn0qtpl2Mu5Y826Q5lNad8j6ISu9mB32qfgfFaTGxZWUc",
+            },
             "args": [
                 "run",
                 "all",
-                "sampleData"
+                "sampleData",
+                "interestingFundsOnly"
             ],
             "console": "integratedTerminal"
         },
@@ -30,9 +36,39 @@
             "request": "launch",
             "name": "Launch CVMDataWorker",
             "program": "${workspaceFolder}/bin/cvmfe.js",
+            "env": {
+                "WTD_TOKEN": "oXJEmvYW0Osw3ALRn0qtpl2Mu5Y826Q5lNad8j6ISu9mB32qfgfFaTGxZWUc",
+            },
             "args": [
                 "run",
                 "cvmDataWorker",
+                "sampleData"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch B3DataWorker",
+            "program": "${workspaceFolder}/bin/cvmfe.js",            
+            "args": [
+                "run",
+                "b3DataWorker",
+                "sampleData"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch WTDImportWorker",
+            "program": "${workspaceFolder}/bin/cvmfe.js",
+            "env": {
+                "WTD_TOKEN": "oXJEmvYW0Osw3ALRn0qtpl2Mu5Y826Q5lNad8j6ISu9mB32qfgfFaTGxZWUc",
+            },
+            "args": [
+                "run",
+                "wtdImportWorker",
                 "sampleData"
             ],
             "console": "integratedTerminal"
@@ -45,7 +81,7 @@
             "args": [
                 "run",
                 "cvmStatisticWorker",
-                "sampleData"
+                "interestingFundsOnly"
             ],
             "console": "integratedTerminal"
         },

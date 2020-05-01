@@ -1,0 +1,2 @@
+DROP INDEX inf_diario_fi_pending_statistic_at_cnpj_fundo_index;
+CREATE INDEX inf_diario_fi_cnpj_fundo_pending_statistic_at_index ON public.inf_diario_fi (cnpj_fundo, pending_statistic_at);
