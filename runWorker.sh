@@ -19,6 +19,7 @@ bashopts_declare -n POSTGRES_PASSWORD -l postgres-password -d "Postgres password
 bashopts_declare -n POSTGRES_READONLY_USERNAME -l postgres-readonly-username -d "Postgres readonly username" -t string -v readonly
 bashopts_declare -n POSTGRES_READONLY_PASSWORD -l postgres-readonly-password -d "Postgres readonly password" -t string -v KM8Rd9cJ4724nbRW
 bashopts_declare -n WTD_TOKEN -l wtd-token -d "WorldTradingData.com token" -t string -v 123
+bashopts_declare -n EOD_TOKEN -l eod-token -d "eodhistoricaldata.com token" -t string -v 123
 
 # Parse arguments
 bashopts_parse_args "$@"
@@ -40,6 +41,7 @@ echo "POSTGRES_PASSWORD: $POSTGRES_PASSWORD"
 echo "POSTGRES_READONLY_USERNAME: $POSTGRES_READONLY_USERNAME"
 echo "POSTGRES_READONLY_PASSWORD: $POSTGRES_READONLY_PASSWORD"
 echo "WTD_TOKEN: $WTD_TOKEN"
+echo "EOD_TOKEN: $EOD_TOKEN"
 
 echo "Deploying $ENV environment stack"
 
@@ -51,9 +53,9 @@ if [ $ACTION = "create" ]; then
     fi
 
     if [ -n "$SCHEDULE" ]; then        
-        docker run --network stack_internal_network $DEBUG_ARGS --label=cron.schedule="$SCHEDULE" $EXPOSE_ARGS --name $NAME --cap-add=SYS_ADMIN  -v worker_volume_$NAME:/cvm-fund-explorer-workers/db -e CONNECTION_STRING=postgresql://"$POSTGRES_USERNAME":"$POSTGRES_PASSWORD"@postgres:5432/cvmData -e READONLY_USERNAME="$POSTGRES_READONLY_USERNAME" -e READONLY_PASSWORD="$POSTGRES_READONLY_PASSWORD" -e WTD_TOKEN="$WTD_TOKEN" conradoqg/cvm-fund-explorer-workers ${bashopts_commands[@]}
+        docker run --network stack_internal_network $DEBUG_ARGS --label=cron.schedule="$SCHEDULE" $EXPOSE_ARGS --name $NAME --cap-add=SYS_ADMIN  -v worker_volume_$NAME:/cvm-fund-explorer-workers/db -e CONNECTION_STRING=postgresql://"$POSTGRES_USERNAME":"$POSTGRES_PASSWORD"@postgres:5432/cvmData -e READONLY_USERNAME="$POSTGRES_READONLY_USERNAME" -e READONLY_PASSWORD="$POSTGRES_READONLY_PASSWORD" -e EOD_TOKEN="$EOD_TOKEN" conradoqg/cvm-fund-explorer-workers ${bashopts_commands[@]}
     else
-        docker run --network stack_internal_network $DEBUG_ARGS $EXPOSE_ARGS --name $NAME --cap-add=SYS_ADMIN  -v worker_volume_$NAME:/cvm-fund-explorer-workers/db -e CONNECTION_STRING=postgresql://"$POSTGRES_USERNAME":"$POSTGRES_PASSWORD"@postgres:5432/cvmData -e READONLY_USERNAME="$POSTGRES_READONLY_USERNAME" -e READONLY_PASSWORD="$POSTGRES_READONLY_PASSWORD" -e WTD_TOKEN="$WTD_TOKEN" conradoqg/cvm-fund-explorer-workers ${bashopts_commands[@]}
+        docker run --network stack_internal_network $DEBUG_ARGS $EXPOSE_ARGS --name $NAME --cap-add=SYS_ADMIN  -v worker_volume_$NAME:/cvm-fund-explorer-workers/db -e CONNECTION_STRING=postgresql://"$POSTGRES_USERNAME":"$POSTGRES_PASSWORD"@postgres:5432/cvmData -e READONLY_USERNAME="$POSTGRES_READONLY_USERNAME" -e READONLY_PASSWORD="$POSTGRES_READONLY_PASSWORD" -e WTD_TOKEN="$WTD_TOKEN" -e EOD_TOKEN="$EOD_TOKEN" conradoqg/cvm-fund-explorer-workers ${bashopts_commands[@]}
     fi    
 elif [ $ACTION = "remove" ]; then
     docker service rm cvmFundExplorer
