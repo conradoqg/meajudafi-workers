@@ -11,6 +11,7 @@ const XPIFundWorker = require('../lib/worker/xpiFundWorker');
 const BTGPactualFundWorker = require('../lib/worker/btgPactualFundWorker');
 const ModalMaisFundWorker = require('../lib/worker/modalMaisFundWorker');
 const MigrateWorker = require('../lib/worker/migrateWorker');
+const CONFIG = require('../lib/config');
 
 const createCommandHandler = (func) => {
     return async (argv) => {
@@ -28,6 +29,8 @@ const createCommandHandler = (func) => {
 
 console.log(`CVMFundExplorer v${package.version}`);
 
+const hiddenKey = ['PASSWORD', 'USERNAME', 'TOKEN']
+
 yargs
     .example('$0 run cvmDataWorker', 'Download, convert and insert data from CVM to database.')
     .example('$0 run cvmStatisticWorker -b', 'Load CVM data from database and generate financial information.')
@@ -43,6 +46,10 @@ yargs
             .version(false);
     }, createCommandHandler(async (argv) => {
         const worker = argv.worker;
+
+        console.log('\nCONFIG ----------------------------------------------');
+        Object.keys(CONFIG).map(itemKey => hiddenKey.some(v => itemKey.includes(v)) ? itemKey : itemKey + ": " + CONFIG[itemKey]).map(line => console.log(line));
+        console.log('-------------------------------------------------------\n');
 
         if (worker.toLowerCase() == 'cvmDataWorker'.toLowerCase()) {
             await (new CVMDataWorker()).work(argv);
