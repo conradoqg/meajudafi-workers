@@ -47,9 +47,9 @@ yargs
     }, createCommandHandler(async (argv) => {
         const worker = argv.worker;
 
-        console.log('\nCONFIG ----------------------------------------------');
+        console.log('\nCONFIG ----------------------------------------------')
         Object.keys(CONFIG).map(itemKey => hiddenKey.some(v => itemKey.includes(v)) ? itemKey : itemKey + ": " + CONFIG[itemKey]).map(line => console.log(line));
-        console.log('-------------------------------------------------------\n');
+        console.log('-------------------------------------------------------\n')
 
         if (worker.toLowerCase() == 'cvmDataWorker'.toLowerCase()) {
             await (new CVMDataWorker()).work(argv);
