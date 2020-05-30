@@ -7,7 +7,8 @@ RUN apk update && apk upgrade && \
       chromium@edge \
       nss@edge
 
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
 RUN mkdir /cvm-fund-explorer-workers
 
