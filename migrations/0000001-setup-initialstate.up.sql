@@ -374,3 +374,13 @@ CREATE INDEX IF NOT EXISTS inf_cadastral_fi_with_xpi_and_iryf_of_last_year_f_icf
 CREATE OR REPLACE FUNCTION icf_denom_social_unaccented(inf_cadastral_fi_with_xpi_and_iryf_of_last_year) RETURNS text AS $$
   SELECT private.f_unaccent($1.icf_denom_social);
 $$ LANGUAGE SQL;
+
+GRANT CONNECT ON DATABASE "cvmData" TO readonly;
+GRANT USAGE ON SCHEMA public, private TO readonly;
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO readonly;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public
+    GRANT SELECT ON TABLES TO readonly;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public
+    GRANT EXECUTE ON FUNCTIONS TO readonly;	
+ALTER ROLE readonly SET search_path TO public,private;		
+ALTER ROLE readonly IN DATABASE "cvmData" SET default_transaction_isolation TO "read uncommitted";
