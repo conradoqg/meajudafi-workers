@@ -1,0 +1,1 @@
+DROP INDEX running_days_with_indicators_dt_comptc;
