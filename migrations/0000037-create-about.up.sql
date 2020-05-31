@@ -1,0 +1,4 @@
+CREATE TABLE about (
+	what TEXT NOT NULL PRIMARY KEY,
+	info JSON NOT NULL	
+);
