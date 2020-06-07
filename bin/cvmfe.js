@@ -1,8 +1,10 @@
 const path = require('path');
-if (process.argv[1].includes('snapshot')) process.argv[1] = process.argv[1].replace('arte.js', path.relative(process.cwd(), process.argv0)); // Workaround that shows the correct file path inside the pkg generated file
+if (process.argv[1].includes('snapshot')) process.argv[1] = process.argv[1].replace('cvmfe.js', path.relative(process.cwd(), process.argv0)); // Workaround that shows the correct file path inside the pkg generated file
 const yargs = require('yargs');
-const package = require('../package.json');
 
+require('events').EventEmitter.defaultMaxListeners = 50;
+
+const package = require('../package.json');
 const CVMDataWorker = require('../lib/worker/cvmDataWorker');
 const B3DataWorker = require('../lib/worker/b3DataWorker');
 const CVMStatisticWorker = require('../lib/worker/cvmStatisticWorker');
