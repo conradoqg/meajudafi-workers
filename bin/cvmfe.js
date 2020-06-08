@@ -13,7 +13,7 @@ const XPIFundWorker = require('../lib/worker/xpiFundWorker');
 const BTGPactualFundWorker = require('../lib/worker/btgPactualFundWorker');
 const ModalMaisFundWorker = require('../lib/worker/modalMaisFundWorker');
 const MigrateWorker = require('../lib/worker/migrateWorker');
-const CONFIG = require('../lib/config');
+const CONFIG = require('../lib/util/config');
 
 const createCommandHandler = (func) => {
     return async (argv) => {
