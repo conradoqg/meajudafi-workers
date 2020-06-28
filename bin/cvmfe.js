@@ -1,10 +1,12 @@
+// Set globals
+require('events').EventEmitter.defaultMaxListeners = 50;
 const path = require('path');
 if (process.argv[1].includes('snapshot')) process.argv[1] = process.argv[1].replace('cvmfe.js', path.relative(process.cwd(), process.argv0)); // Workaround that shows the correct file path inside the pkg generated file
+require('../lib/util/chainableError').replaceOriginalWithChained();
+
 const yargs = require('yargs');
 
-require('events').EventEmitter.defaultMaxListeners = 50;
-
-const package = require('../package.json');
+const packageJSON = require('../package.json');
 const CVMDataWorker = require('../lib/worker/cvmDataWorker');
 const B3DataWorker = require('../lib/worker/b3DataWorker');
 const CVMStatisticWorker = require('../lib/worker/cvmStatisticWorker');
@@ -20,8 +22,7 @@ const createCommandHandler = (func) => {
         try {
             await func(argv);
             process.exit(0);
-        }
-        catch (ex) {
+        } catch (ex) {
             if (ex.toPrint) console.error(ex.toPrint());
             else console.error(ex.stack);
             process.exit(1);
@@ -29,7 +30,11 @@ const createCommandHandler = (func) => {
     };
 };
 
-console.log(`CVMFundExplorer v${package.version}`);
+process.on('exit', (code) => {
+    console.log('Process exit event with code: ', code);
+});
+
+console.log(`CVMFundExplorer v${packageJSON.version}`);
 
 const hiddenKey = ['PASSWORD', 'USERNAME', 'TOKEN']
 
