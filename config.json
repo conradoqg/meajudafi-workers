@@ -1,14 +1,15 @@
 {
     "batchSize": 300,
     "highWaterMark": 1000,
+    "POOL_SIZE": 20,
     "downloadRetries": 3,
     "scraperTries": 5,
+    "QUERY_LOG_SIZE": 100,
     "CONNECTION_STRING": "postgresql://postgres:temporary@meajudafi.com.br:5432/cvmData",
     "READONLY_USERNAME": "readonly",
     "READONLY_PASSWORD": "pJvykeLXdhCDFs99",
     "WTD_TOKEN": null,
-    "EOD_TOKEN": null,
-    "POOL_SIZE": 20,
+    "EOD_TOKEN": null,    
     "MAX_PARALLEL_THREADS": 16,
     "PARALLEL_PROCESS": true
 }
