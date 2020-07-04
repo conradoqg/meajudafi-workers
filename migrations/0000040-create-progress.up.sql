@@ -1,3 +1,5 @@
+CREATE EXTENSION ltree;
+
 CREATE UNLOGGED TABLE public.progress (
 	"path" ltree NOT NULL,
 	"data" jsonb NULL,
