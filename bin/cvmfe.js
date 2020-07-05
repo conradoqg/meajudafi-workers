@@ -21,22 +21,26 @@ const createCommandHandler = (func) => {
     return async (argv) => {
         try {
             await func(argv);
-            process.exit(0);
+
+            // Force exit if there is something holding the event loop
+            setTimeout(() => {
+                console.log('Forcing process exit after 10m');
+                process.exit(0);
+            }, 1000 * 60 * 10).unref();
         } catch (ex) {
-            if (ex.toPrint) console.error(ex.toPrint());
-            else console.error(ex.stack);
+            console.error(ex.stack);
             process.exit(1);
         }
     };
 };
 
 process.on('exit', (code) => {
-    console.log('Process exit event with code: ', code);
+    console.log('Process exit event with code:', code);
 });
 
 console.log(`CVMFundExplorer v${packageJSON.version}`);
 
-const hiddenKey = ['PASSWORD', 'USERNAME', 'TOKEN']
+const hiddenKey = ['PASSWORD', 'USERNAME', 'TOKEN'];
 
 yargs
     .example('$0 run cvmDataWorker', 'Download, convert and insert data from CVM to database.')
@@ -54,9 +58,9 @@ yargs
     }, createCommandHandler(async (argv) => {
         const worker = argv.worker;
 
-        console.log('\nCONFIG ----------------------------------------------')
-        Object.keys(CONFIG).map(itemKey => hiddenKey.some(v => itemKey.includes(v)) ? itemKey : itemKey + ": " + CONFIG[itemKey]).map(line => console.log(line));
-        console.log('-------------------------------------------------------\n')
+        console.log('\nCONFIG ----------------------------------------------');
+        Object.keys(CONFIG).map(itemKey => hiddenKey.some(v => itemKey.includes(v)) ? itemKey : itemKey + ': ' + CONFIG[itemKey]).map(line => console.log(line));
+        console.log('-------------------------------------------------------\n');
 
         if (worker.toLowerCase() == 'cvmDataWorker'.toLowerCase()) {
             await (new CVMDataWorker()).work(argv);
