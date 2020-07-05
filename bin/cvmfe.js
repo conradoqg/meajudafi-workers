@@ -20,7 +20,10 @@ const CONFIG = require('../lib/util/config');
 const createCommandHandler = (func) => {
     return async (argv) => {
         try {
-            await func(argv);
+            await func(argv);            
+
+            // Wait 5 seconds so promises can complete
+            await new Promise(resolve => setTimeout(resolve, 5000));
 
             // Force exit if there is something holding the event loop
             setTimeout(() => {
