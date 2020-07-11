@@ -7,20 +7,12 @@ require('../lib/util/chainableError').replaceOriginalWithChained();
 const yargs = require('yargs');
 
 const packageJSON = require('../package.json');
-const CVMDataWorker = require('../lib/worker/cvmDataWorker');
-const B3DataWorker = require('../lib/worker/b3DataWorker');
-const CVMStatisticWorker = require('../lib/worker/cvmStatisticWorker');
-const DataImprovementWorker = require('../lib/worker/dataImprovementWorker');
-const XPIFundWorker = require('../lib/worker/xpiFundWorker');
-const BTGPactualFundWorker = require('../lib/worker/btgPactualFundWorker');
-const ModalMaisFundWorker = require('../lib/worker/modalMaisFundWorker');
-const MigrateWorker = require('../lib/worker/migrateWorker');
 const CONFIG = require('../lib/util/config');
 
 const createCommandHandler = (func) => {
     return async (argv) => {
         try {
-            await func(argv);            
+            await func(argv);
 
             // Wait 5 seconds so promises can complete
             await new Promise(resolve => setTimeout(resolve, 5000));
@@ -65,32 +57,30 @@ yargs
         Object.keys(CONFIG).map(itemKey => hiddenKey.some(v => itemKey.includes(v)) ? itemKey : itemKey + ': ' + CONFIG[itemKey]).map(line => console.log(line));
         console.log('-------------------------------------------------------\n');
 
-        if (worker.toLowerCase() == 'cvmDataWorker'.toLowerCase()) {
-            await (new CVMDataWorker()).work(argv);
-        } else if (worker.toLowerCase() == 'b3DataWorker'.toLowerCase()) {
-            await (new B3DataWorker()).work(argv);
-        } else if (worker.toLowerCase() == 'cvmStatisticWorker'.toLowerCase()) {
-            await (new CVMStatisticWorker()).work(argv);
-        } else if (worker.toLowerCase() == 'dataImprovementWorker'.toLowerCase()) {
-            await (new DataImprovementWorker()).work(argv);
-        } else if (worker.toLowerCase() == 'xpiFundWorker'.toLowerCase()) {
-            await (new XPIFundWorker()).work(argv);
-        } else if (worker.toLowerCase() == 'btgPactualFundWorker'.toLowerCase()) {
-            await (new BTGPactualFundWorker()).work(argv);
-        } else if (worker.toLowerCase() == 'modalMaisFundWorker'.toLowerCase()) {
-            await (new ModalMaisFundWorker()).work(argv);
-        } else if (worker.toLowerCase() == 'migrateWorker'.toLowerCase()) {
-            await (new MigrateWorker()).work(argv);
-        } else if (worker.toLowerCase() == 'all'.toLowerCase()) {
-            await (new CVMDataWorker()).work(argv);
-            await (new B3DataWorker()).work(argv);
-            await (new CVMStatisticWorker()).work(argv);
-            await (new DataImprovementWorker()).work(argv);
-            await (new BTGPactualFundWorker()).work(argv);
-            await (new ModalMaisFundWorker()).work(argv);
-            await (new XPIFundWorker()).work(argv);
-        } else {
-            console.log(`Worker with name '${worker}' not found!`);
+        const workers = [
+            'cvmDataWorker',
+            'eodDataWorker',
+            'wtdDataWorker',
+            'bcbDataWorker',
+            'b3DataWorker',
+            'cvmStatisticWorker',
+            'dataImprovementWorker',
+            'btgPactualFundWorker',
+            'modalMaisFundWorker',
+            'xpiFundWorker',
+            'migrateWorker'
+        ];
+
+        const foundWorker = workers.find(workerItem => workerItem.toLowerCase() == worker.toLowerCase());
+        let workersToRun = [];
+
+        if (foundWorker) workersToRun.push(foundWorker);
+        else if (worker.toLowerCase() == 'all') workersToRun = workers;
+        else console.log(`Worker with name '${worker}' not found!`);
+
+        for (let workerToRun of workersToRun) {
+            const Worker = require(`../lib/worker/${workerToRun}`);
+            await (new Worker()).work(argv);
         }
     }))
     .demandCommand(1)

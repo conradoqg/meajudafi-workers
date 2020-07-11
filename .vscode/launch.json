@@ -3,25 +3,14 @@
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
-    "configurations": [        
-        {
-            "type": "node",
-            "protocol": "inspector",
-            "request": "attach",
-            "name": "Attach to Remote",
-            "address": "meajudafi.com.br",
-            "port": 9229,
-            "localRoot": "${workspaceFolder}",
-            "remoteRoot": "/cvm-fund-explorer-workers",
-            "trace": true
-        },
+    "configurations": [
         {
             "type": "node",
             "request": "launch",
             "name": "Launch All Workers",
             "program": "${workspaceFolder}/bin/cvmfe.js",
             "env": {
-                "WTD_TOKEN": "oXJEmvYW0Osw3ALRn0qtpl2Mu5Y826Q5lNad8j6ISu9mB32qfgfFaTGxZWUc",
+                "EOD_TOKEN": ""
             },
             "args": [
                 "run",
@@ -36,9 +25,6 @@
             "request": "launch",
             "name": "Launch CVMDataWorker",
             "program": "${workspaceFolder}/bin/cvmfe.js",
-            "env": {
-                "WTD_TOKEN": "oXJEmvYW0Osw3ALRn0qtpl2Mu5Y826Q5lNad8j6ISu9mB32qfgfFaTGxZWUc",
-            },
             "args": [
                 "run",
                 "cvmDataWorker",
@@ -49,11 +35,14 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch B3DataWorker",
-            "program": "${workspaceFolder}/bin/cvmfe.js",            
+            "name": "Launch EODDataWorker",
+            "program": "${workspaceFolder}/bin/cvmfe.js",
+            "env": {
+                "EOD_TOKEN": ""
+            },
             "args": [
                 "run",
-                "b3DataWorker",
+                "eodDataWorker",
                 "sampleData"
             ],
             "console": "integratedTerminal"
@@ -61,14 +50,38 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch WTDImportWorker",
+            "name": "Launch WTDDataWorker",
             "program": "${workspaceFolder}/bin/cvmfe.js",
             "env": {
-                "WTD_TOKEN": "oXJEmvYW0Osw3ALRn0qtpl2Mu5Y826Q5lNad8j6ISu9mB32qfgfFaTGxZWUc",
+                "WTD_TOKEN": ""
             },
             "args": [
                 "run",
-                "wtdImportWorker",
+                "wtdDataWorker",
+                "sampleData"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch BCBDataWorker",
+            "program": "${workspaceFolder}/bin/cvmfe.js",
+            "args": [
+                "run",
+                "bcbDataWorker",
+                "sampleData"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch B3DataWorker",
+            "program": "${workspaceFolder}/bin/cvmfe.js",
+            "args": [
+                "run",
+                "b3DataWorker",
                 "sampleData"
             ],
             "console": "integratedTerminal"
@@ -81,8 +94,10 @@
             "args": [
                 "run",
                 "cvmStatisticWorker",
+                "fullStatistics",
                 "interestingFundsOnly"
             ],
+            "env": {},
             "console": "integratedTerminal"
         },
         {
@@ -93,17 +108,6 @@
             "args": [
                 "run",
                 "dataImprovementWorker"
-            ],
-            "console": "integratedTerminal"
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch XPIFundWorker",
-            "program": "${workspaceFolder}/bin/cvmfe.js",
-            "args": [
-                "run",
-                "xpiFundWorker"
             ],
             "console": "integratedTerminal"
         },
@@ -126,6 +130,17 @@
             "args": [
                 "run",
                 "modalMaisFundWorker"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch XPIFundWorker",
+            "program": "${workspaceFolder}/bin/cvmfe.js",
+            "args": [
+                "run",
+                "xpiFundWorker"
             ],
             "console": "integratedTerminal"
         },
