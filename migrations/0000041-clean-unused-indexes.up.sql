@@ -1,0 +1,18 @@
+DROP INDEX IF EXISTS public.investment_return_daily_cnpj_fundo_dt_comptc_index;
+ALTER TABLE public.wtd_ibov DROP CONSTRAINT wtd_ibov_id_key;
+ALTER TABLE public.investment_return_yearly DROP CONSTRAINT investment_return_yearly_id_key;
+ALTER TABLE public.investment_return_monthly DROP CONSTRAINT investment_return_monthly_id_key;
+ALTER TABLE public.investment_return_daily DROP CONSTRAINT investment_return_daily_id_key;
+ALTER TABLE public.inf_diario_fi DROP CONSTRAINT inf_diario_fi_id_key;
+ALTER TABLE public.inf_cadastral_fi DROP CONSTRAINT inf_cadastral_fi_id_key;
+ALTER TABLE public.funds DROP CONSTRAINT funds_f_id_key;
+ALTER TABLE public.fbcdata_sgs_7i DROP CONSTRAINT fbcdata_sgs_7i_id_key;
+ALTER TABLE public.fbcdata_sgs_433i DROP CONSTRAINT fbcdata_sgs_433i_id_key;
+ALTER TABLE public.fbcdata_sgs_21619i DROP CONSTRAINT fbcdata_sgs_21619i_id_key;
+ALTER TABLE public.fbcdata_sgs_1i DROP CONSTRAINT fbcdata_sgs_1i_id_key;
+ALTER TABLE public.fbcdata_sgs_190i DROP CONSTRAINT fbcdata_sgs_190i_id_key;
+ALTER TABLE public.fbcdata_sgs_189i DROP CONSTRAINT fbcdata_sgs_189i_id_key;
+ALTER TABLE public.fbcdata_sgs_12i DROP CONSTRAINT fbcdata_sgs_12i_id_key;
+ALTER TABLE public.fbcdata_sgs_11i DROP CONSTRAINT fbcdata_sgs_11i_id_key;
+ALTER TABLE public.eod_historial_data DROP CONSTRAINT eod_historial_data_id_key;
+ALTER TABLE public.cota_hist_a DROP CONSTRAINT cota_hist_a_id_key;

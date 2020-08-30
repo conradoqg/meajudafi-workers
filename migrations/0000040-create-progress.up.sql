@@ -1,4 +1,4 @@
-CREATE EXTENSION ltree;
+CREATE EXTENSION IF NOT EXISTS ltree;
 
 CREATE UNLOGGED TABLE public.progress (
 	"path" ltree NOT NULL,
