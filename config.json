@@ -10,6 +10,6 @@
     "READONLY_PASSWORD": "pJvykeLXdhCDFs99",
     "WTD_TOKEN": null,
     "EOD_TOKEN": null,    
-    "MAX_PARALLEL_THREADS": 16,
+    "MAX_PARALLEL_THREADS": 8,
     "PARALLEL_PROCESS": true
 }
