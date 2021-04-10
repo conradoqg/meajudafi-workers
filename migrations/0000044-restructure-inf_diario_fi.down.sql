@@ -1,0 +1,1 @@
+ALTER TABLE public.inf_diario_fi DROP COLUMN tp_fundo;
