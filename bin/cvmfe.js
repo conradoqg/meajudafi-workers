@@ -3,11 +3,22 @@ require('events').EventEmitter.defaultMaxListeners = 50;
 const path = require('path');
 if (process.argv[1].includes('snapshot')) process.argv[1] = process.argv[1].replace('cvmfe.js', path.relative(process.cwd(), process.argv0)); // Workaround that shows the correct file path inside the pkg generated file
 require('../lib/util/chainableError').replaceOriginalWithChained();
-
 const yargs = require('yargs');
-
 const packageJSON = require('../package.json');
 const CONFIG = require('../lib/util/config');
+const Sentry = require('@sentry/node');
+
+if (CONFIG.SENTRY_DSN_TOKEN) {
+    Sentry.init({
+        dsn: CONFIG.SENTRY_DSN_TOKEN,
+        release: `${packageJSON.name}-${packageJSON.version}`,
+        serverName: CONFIG.JOB_NAME,
+        integrations: [
+            new Sentry.Integrations.Http({ tracing: true })
+        ],
+        tracesSampleRate: 1.0,
+    });
+}
 
 const createCommandHandler = (func) => {
     return async (argv) => {
@@ -54,7 +65,7 @@ yargs
         const worker = argv.worker;
 
         console.log('\nCONFIG ----------------------------------------------');
-        Object.keys(CONFIG).map(itemKey => hiddenKey.some(v => itemKey.includes(v)) ? itemKey : itemKey + ': ' + CONFIG[itemKey]).map(line => console.log(line));
+        Object.keys(CONFIG).map(itemKey => hiddenKey.some(v => itemKey.includes(v)) ? (CONFIG[itemKey] != null ? itemKey + ': <redacted>' : itemKey + ': ' + CONFIG[itemKey]) : itemKey + ': ' + CONFIG[itemKey]).map(line => console.log(line));
         console.log('-------------------------------------------------------\n');
 
         const workers = [
