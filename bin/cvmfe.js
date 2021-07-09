@@ -46,7 +46,7 @@ process.on('exit', (code) => {
 
 console.log(`CVMFundExplorer v${packageJSON.version}`);
 
-const hiddenKey = ['PASSWORD', 'USERNAME', 'TOKEN'];
+const hiddenKey = ['PASSWORD', 'USERNAME', 'TOKEN', 'CONNECTION_STRING'];
 
 yargs
     .example('$0 run cvmDataWorker', 'Download, convert and insert data from CVM to database.')
@@ -68,12 +68,17 @@ yargs
         Object.keys(CONFIG).map(itemKey => hiddenKey.some(v => itemKey.includes(v)) ? (CONFIG[itemKey] != null ? itemKey + ': <redacted>' : itemKey + ': ' + CONFIG[itemKey]) : itemKey + ': ' + CONFIG[itemKey]).map(line => console.log(line));
         console.log('-------------------------------------------------------\n');
 
+        console.log('\nOPTIONS----------------------------------------------');
+        console.log(JSON.stringify(argv, null, '\t'));
+        console.log('-------------------------------------------------------\n');
+
         const workers = [
             'cvmDataWorker',
             'eodDataWorker',
             'wtdDataWorker',
             'bcbDataWorker',
             'b3DataWorker',
+            'yahooDataWorker',
             'cvmStatisticWorker',
             'dataImprovementWorker',
             'btgPactualFundWorker',

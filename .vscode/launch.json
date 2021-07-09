@@ -18,7 +18,7 @@
                 "sampleData",
                 "interestingFundsOnly"
             ],
-            "console": "integratedTerminal"
+            "console": "internalConsole"
         },
         {
             "type": "node",
@@ -30,7 +30,7 @@
                 "cvmDataWorker",
                 "sampleData"
             ],
-            "console": "integratedTerminal"
+            "console": "internalConsole"
         },
         {
             "type": "node",
@@ -45,7 +45,7 @@
                 "eodDataWorker",
                 "sampleData"
             ],
-            "console": "integratedTerminal"
+            "console": "internalConsole"
         },
         {
             "type": "node",
@@ -60,7 +60,7 @@
                 "wtdDataWorker",
                 "sampleData"
             ],
-            "console": "integratedTerminal"
+            "console": "internalConsole"
         },
         {
             "type": "node",
@@ -72,7 +72,7 @@
                 "bcbDataWorker",
                 "sampleData"
             ],
-            "console": "integratedTerminal"
+            "console": "internalConsole"
         },
         {
             "type": "node",
@@ -84,7 +84,19 @@
                 "b3DataWorker",
                 "sampleData"
             ],
-            "console": "integratedTerminal"
+            "console": "internalConsole"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch YahooDataWorker",
+            "program": "${workspaceFolder}/bin/cvmfe.js",
+            "args": [
+                "run",
+                "yahooDataWorker",
+                "sampleData"
+            ],
+            "console": "internalConsole"
         },
         {
             "type": "node",
@@ -98,7 +110,7 @@
                 "interestingFundsOnly"
             ],
             "env": {},
-            "console": "integratedTerminal"
+            "console": "internalConsole"
         },
         {
             "type": "node",
@@ -109,7 +121,7 @@
                 "run",
                 "dataImprovementWorker"
             ],
-            "console": "integratedTerminal"
+            "console": "internalConsole"
         },
         {
             "type": "node",
@@ -120,7 +132,7 @@
                 "run",
                 "btgPactualFundWorker"
             ],
-            "console": "integratedTerminal"
+            "console": "internalConsole"
         },
         {
             "type": "node",
@@ -131,7 +143,7 @@
                 "run",
                 "modalMaisFundWorker"
             ],
-            "console": "integratedTerminal"
+            "console": "internalConsole"
         },
         {
             "type": "node",
@@ -142,7 +154,7 @@
                 "run",
                 "xpiFundWorker"
             ],
-            "console": "integratedTerminal"
+            "console": "internalConsole"
         },
         {
             "type": "node",
