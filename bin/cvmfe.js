@@ -73,6 +73,7 @@ yargs
         console.log('-------------------------------------------------------\n');
 
         const workers = [
+            'migrateWorker',
             'cvmDataWorker',
             'eodDataWorker',
             'wtdDataWorker',
@@ -83,8 +84,7 @@ yargs
             'dataImprovementWorker',
             'btgPactualFundWorker',
             'modalMaisFundWorker',
-            'xpiFundWorker',
-            'migrateWorker'
+            'xpiFundWorker'            
         ];
 
         const foundWorker = workers.find(workerItem => workerItem.toLowerCase() == worker.toLowerCase());
