@@ -1,0 +1,1 @@
+ALTER TABLE public.inf_cadastral_fi DROP COLUMN invest_prof;
