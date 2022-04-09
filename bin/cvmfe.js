@@ -1,5 +1,6 @@
 // Set globals
 require('events').EventEmitter.defaultMaxListeners = 50;
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 const path = require('path');
 if (process.argv[1].includes('snapshot')) process.argv[1] = process.argv[1].replace('cvmfe.js', path.relative(process.cwd(), process.argv0)); // Workaround that shows the correct file path inside the pkg generated file
 require('../lib/util/chainableError').replaceOriginalWithChained();
@@ -84,7 +85,7 @@ yargs
             'dataImprovementWorker',
             'btgPactualFundWorker',
             'modalMaisFundWorker',
-            'xpiFundWorker'            
+            'xpiFundWorker'
         ];
 
         const foundWorker = workers.find(workerItem => workerItem.toLowerCase() == worker.toLowerCase());
