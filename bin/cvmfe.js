@@ -76,15 +76,12 @@ yargs
         const workers = [
             'migrateWorker',
             'cvmDataWorker',
-            'eodDataWorker',
-            'wtdDataWorker',
             'bcbDataWorker',
             'b3DataWorker',
             'yahooDataWorker',
             'cvmStatisticWorker',
             'dataImprovementWorker',
             'btgPactualFundWorker',
-            'modalMaisFundWorker',
             'xpiFundWorker'
         ];
 
